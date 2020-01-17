@@ -1,0 +1,9 @@
+1、 问题：
+        查询时候需要映射到不同实体，然后并且统一处理。
+    解决：
+        BaseMapper -> BashInterfaceMapper1
+                               -> entityInterface1Mapper1
+                               -> entityInterface1Mapper2
+                   -> BashInterfaceMapper2
+                               -> entityInterface2Mapper1
+                               -> entityInterface2Mapper2
