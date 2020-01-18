@@ -3,3 +3,19 @@
     >>> 无符号的移位。
 
 git 换一个github 测试。
+
+vector Vs ArrayLsit 都是数组实现，然后，一个线程安全，每个方法都加了synchronized
+
+Vector FIFO
+stack LIFO
+
+
+HashTable 和HashMap
+
+实现不同，HashTable 实现dictionary
+
+
+Enumeration Vs Enum
+
+
+BigSet
