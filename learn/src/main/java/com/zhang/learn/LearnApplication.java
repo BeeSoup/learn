@@ -29,6 +29,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *      也许把JAVA当成一门需要考试的学科，也许会要好一些，是要考试的。
  *      多思考，多思考吧。
  *      哎。基础，redis打牢，其他理论，这些日子先这样吧。稳！
+ *
+ *      然后多学习英语吧，朋友，真真真重要！
  */
 @SpringBootApplication
 public class LearnApplication {
