@@ -2,7 +2,7 @@
     >> 带符号的移位，移位你懂的。
     >>> 无符号的移位。
 
-git 换一个github 测试。
+git 换一个github 测试。凭证修改测试。
 
 vector Vs ArrayLsit 都是数组实现，然后，一个线程安全，每个方法都加了synchronized
 
