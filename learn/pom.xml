@@ -12,6 +12,7 @@
         <module>spring-jsp-jdbc-mybatis</module>
         <module>spring-mybatis</module>
         <module>spring-mq</module>
+        <module>spring-concurrentcy</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
