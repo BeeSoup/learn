@@ -1,21 +1,29 @@
-package com.zhangyu.concurrency.learn.demo.one;
+package com.zhangyu.concurrency.learn.atomic;
 
 
-import com.zhangyu.concurrency.learn.annotation.UnsafeThread;
+import com.zhangyu.concurrency.learn.annotation.SafeThread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
+
+/**
+ * 原子性。可见性，有序性
+ * 线程安全
+ * CAS
+ * Unsafe.compareAndSwapInt
+ */
+@SafeThread
+public class AtomicDemo {
 
 
-@UnsafeThread
-public class AddClass {
     //线程的数量
     private static int threadTotal = 200;
     //客户端的请求的数量
     private static int clientTotal = 5000;
 
-    private static long count = 0;
+    private static AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) {
         //产生一个缓存的线程池，使用的是同步队列
@@ -35,10 +43,10 @@ public class AddClass {
             });
         }
         executorService.shutdown();
-        System.out.println("over, this count is " + count);
+        System.out.println("over, this count is " + count.get());
     }
 
     private static void add() {
-        count++;
+        count.incrementAndGet();
     }
 }
