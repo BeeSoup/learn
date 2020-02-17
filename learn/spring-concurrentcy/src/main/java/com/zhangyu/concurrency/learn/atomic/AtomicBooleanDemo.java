@@ -1,29 +1,22 @@
 package com.zhangyu.concurrency.learn.atomic;
 
-
-import com.zhangyu.concurrency.learn.annotation.SafeThread;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 原子性。可见性，有序性
- * 线程安全
- * CAS
- * Unsafe.compareAndSwapInt
+ * 功能，用于某段代码只执行一次
  */
-@SafeThread
-public class AtomicDemo {
-
+public class AtomicBooleanDemo {
 
     //线程的数量
     private static int threadTotal = 200;
     //客户端的请求的数量
     private static int clientTotal = 5000;
 
-    private static AtomicInteger count = new AtomicInteger(0);
+    private static AtomicBoolean isHappened = new AtomicBoolean(false);
 
     public static void main(String[] args) {
         //产生一个缓存的线程池，使用的是同步队列
@@ -34,7 +27,9 @@ public class AtomicDemo {
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();
-                    add();
+                    if (isHappened.compareAndSet(false, true)) {
+                        test();
+                    }
                     semaphore.release();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -43,10 +38,10 @@ public class AtomicDemo {
             });
         }
         executorService.shutdown();
-        System.out.println("over, this count is " + count.get());
+        System.out.println("over, this isHappened is " + isHappened.get());
     }
 
-    private static void add() {
-        count.incrementAndGet();
+    private static void test() {
+        System.out.println("this test is happened!");
     }
 }
