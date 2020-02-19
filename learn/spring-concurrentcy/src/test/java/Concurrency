@@ -21,3 +21,6 @@
    数据库切库：
    分库分表：
 
+   原子性：lock 互斥-------synchronized 依赖于JVM Lock 依赖特俗的CPU指令，代码实现，ReentrantLock
+   有序性：
+   可见性：volatile 总线通知，隔离掉重排， 屏障
