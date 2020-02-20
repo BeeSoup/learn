@@ -22,5 +22,19 @@
    分库分表：
 
    原子性：lock 互斥-------synchronized 依赖于JVM Lock 依赖特俗的CPU指令，代码实现，ReentrantLock
-   有序性：
+     synchronized 不可中断锁，适合竞争不激烈的，可读性好。竞争激烈的时候，性能下降很多
+     Lock：可中断锁，多样化同步，竞争激烈时能维持常态
+     Atomic包：竞争激烈时也能维持常态，比Lock性能要好；只能同步一个值
+
+   有序性： happens-before
+
    可见性：volatile 总线通知，隔离掉重排， 屏障
+   ： 线程交替执行、重排序后交替执行、更新后未将数据更新回主存
+      synchronized
+   ： 线程解锁前，必须把共享变量的最新值刷新到主城里面
+   ： 线程加锁时，清空工作内存的共享变量的值
+   ： volatile :通过内存屏障和禁止重排序优化来控制 适用于做状态标记量
+
+
+   线程置中断位置 Thread.interrupt() isInterrupted() interrupted()
+   线程结束：Thread.join() Thread.isAlive()
