@@ -1,0 +1,37 @@
+
+
+
+Collection  -> Iterable:
+      List ->   
+	  Set  ->
+	  Queue ->
+	  Deque ->
+	  BlockingQueue  ->Queue
+	  BlockingDeque ->BlockingQueue 
+	                ->Deque
+		   
+	->implements List<E>, Deque<E>	   
+	LinkedList --->Node<E>  (add()、offset()、set()、remove()、poll()、element()、peek()) modCount针对于queue
+	poll() -> null
+	remove() -> NoSuchElementException
+	
+	push() -> addFirst(e);
+	pop()  -> removeFirst();
+	
+	
+	
+	/**
+	*  extends AbstractList<E>
+    *   implements List<E>
+	*/
+	ArrayList ---> transient Object[] elementData; // non-private to simplify nested class access     private static final int DEFAULT_CAPACITY = 10;
+	
+	---> 大于10的情况
+	 private void ensureCapacityInternal(int minCapacity) {
+        if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
+            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+        }
+
+        ensureExplicitCapacity(minCapacity);
+    }
+	

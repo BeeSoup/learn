@@ -1,0 +1,5 @@
+
+  JAVA提供的同步容器 (单纯的方法是原子性的，多个原子性的操作，不能保证整个的原子性) ：
+        ArrayList  -> Vector、Stack
+        HashMap -> HashTable(key/value 都不可为null)
+        Collections.synchronizedXXX(List/Set/Map)
