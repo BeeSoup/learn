@@ -1,6 +1,6 @@
 package com.zhangyu.concurrency.learn.reenlock;
 
-import com.zhangyu.concurrency.learn.Util.LockUtils;
+import com.zhangyu.concurrency.learn.Util.LogUtils;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -24,7 +24,7 @@ public class ReentrantReadWriteLockDemo {
     static final Lock writeLock = lock.writeLock();
 
     public static void main(String[] args) {
-        LockUtils.log().info("start");
+        LogUtils.log().info("start");
 
 
     }

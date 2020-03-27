@@ -1,12 +1,9 @@
 package com.zhangyu.concurrency.learn.reenlock;
 
-import com.zhangyu.concurrency.learn.Util.LockUtils;
+import com.zhangyu.concurrency.learn.Util.LogUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -49,14 +46,14 @@ public class LockDemo8 {
         new Thread(() -> {
             try {
                 lock.lock();
-                LockUtils.log().info("1: 1");
+                LogUtils.log().info("1: 1");
                 condition.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
-                LockUtils.log().info("1: 5");
+                LogUtils.log().info("1: 5");
                 lock.unlock();
-                LockUtils.log().info("1: 6");
+                LogUtils.log().info("1: 6");
             }
 
         }).start();
@@ -64,28 +61,28 @@ public class LockDemo8 {
         new Thread(() ->{
             try{
                 lock.lock();
-                LockUtils.log().info("2: 2");
+                LogUtils.log().info("2: 2");
                 condition.signalAll();
             } finally {
-                LockUtils.log().info("2: 3");
+                LogUtils.log().info("2: 3");
                 lock.unlock();
-                LockUtils.log().info("2: 4");
+                LogUtils.log().info("2: 4");
             }
         }).start();
 // unlock的时候，就可以被竞争到
-//        17:42:12.445 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 1: 1
-//17:42:12.451 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 2: 2
-//17:42:20.254 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 2: 3
-//17:42:20.905 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 1: 5
-//17:42:27.775 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 2: 4
-//17:42:24.108 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 1: 6
+//        17:42:12.445 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 1: 1
+//17:42:12.451 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 2: 2
+//17:42:20.254 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 2: 3
+//17:42:20.905 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 1: 5
+//17:42:27.775 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 2: 4
+//17:42:24.108 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 1: 6
 
-//        17:44:03.122 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 1: 1
-//17:44:03.126 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 2: 2
-//17:44:03.126 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 2: 3
-//17:44:03.126 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 2: 4
-//17:44:03.126 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 1: 5
-//17:44:03.126 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LockUtils - 1: 6
+//        17:44:03.122 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 1: 1
+//17:44:03.126 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 2: 2
+//17:44:03.126 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 2: 3
+//17:44:03.126 [Thread-1] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 2: 4
+//17:44:03.126 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 1: 5
+//17:44:03.126 [Thread-0] INFO com.zhangyu.concurrency.learn.Util.LogUtils - 1: 6
     }
 
     private static void add() {
