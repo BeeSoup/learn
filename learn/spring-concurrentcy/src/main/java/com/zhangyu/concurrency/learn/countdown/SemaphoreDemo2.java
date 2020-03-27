@@ -13,14 +13,13 @@ import java.util.concurrent.Semaphore;
  * <p>
  * acquire
  * release
- *
  */
 public class SemaphoreDemo2 {
 
-    final static Logger log = LoggerFactory.getLogger(SemaphoreDemo2.class);
+    static final Logger log = LoggerFactory.getLogger(SemaphoreDemo2.class);
 
-    final static int threadNum = 20;
-    final static int semaphoreNum = 3;
+    static final int threadNum = 20;
+    static final int semaphoreNum = 3;
 
 
     public static void main(String[] args) {

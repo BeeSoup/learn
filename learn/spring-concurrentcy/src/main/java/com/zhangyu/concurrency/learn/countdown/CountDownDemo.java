@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 public class CountDownDemo {
     private static Logger log = LoggerFactory.getLogger(CountDownDemo.class);
 
-    final static int threadNum = 200;
+    static final int threadNum = 200;
 
     static int count;
 

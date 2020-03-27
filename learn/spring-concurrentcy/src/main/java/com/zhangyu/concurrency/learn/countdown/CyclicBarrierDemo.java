@@ -17,9 +17,9 @@ import java.util.concurrent.Executors;
 public class CyclicBarrierDemo {
 
     //等待一直未到达初始化的整数倍，可能无限等待
-    private final static CyclicBarrier barrier = new CyclicBarrier(5);
+    private static final CyclicBarrier barrier = new CyclicBarrier(5);
 
-    final static Logger log = LoggerFactory.getLogger(CyclicBarrierDemo.class);
+    static final Logger log = LoggerFactory.getLogger(CyclicBarrierDemo.class);
 
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executor = Executors.newCachedThreadPool();

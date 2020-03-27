@@ -14,10 +14,10 @@ import java.util.concurrent.*;
  */
 public class CyclicBarrierDemo3 {
 
-    final static Logger log = LoggerFactory.getLogger(CyclicBarrierDemo3.class);
+    static final Logger log = LoggerFactory.getLogger(CyclicBarrierDemo3.class);
 
     //等待一直未到达初始化的整数倍，可能无限等待 到达屏障后，执行   static按定义顺序
-    private final static CyclicBarrier barrier = new CyclicBarrier(3, () -> {
+    private static final CyclicBarrier barrier = new CyclicBarrier(3, () -> {
         log.info("continue ? yes ,and ready");
     });
 

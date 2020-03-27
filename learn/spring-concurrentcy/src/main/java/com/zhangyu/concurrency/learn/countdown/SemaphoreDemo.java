@@ -17,12 +17,12 @@ import java.util.concurrent.Semaphore;
  */
 public class SemaphoreDemo {
 
-    final static Logger log = LoggerFactory.getLogger(SemaphoreDemo.class);
+    static final Logger log = LoggerFactory.getLogger(SemaphoreDemo.class);
 
-    final static int threadNum = 5000;
-    final static int semaphoreNum = 200;
+    static final int threadNum = 5000;
+    static final int semaphoreNum = 200;
 
-    final static Semaphore semaphore = new Semaphore(semaphoreNum);
+    static final Semaphore semaphore = new Semaphore(semaphoreNum);
 
     public static void main(String[] args) {
         ExecutorService service = Executors.newCachedThreadPool();

@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class CountDownDemo2 {
     private static Logger log = LoggerFactory.getLogger(CountDownDemo2.class);
 
-    final static int threadNum = 200;
+    static final int threadNum = 200;
 
     static boolean flag = true;
 

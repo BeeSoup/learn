@@ -17,10 +17,10 @@ import java.util.concurrent.Semaphore;
  */
 public class SemaphoreDemo3 {
 
-    final static Logger log = LoggerFactory.getLogger(SemaphoreDemo3.class);
+    static final Logger log = LoggerFactory.getLogger(SemaphoreDemo3.class);
 
-    final static int threadNum = 20;
-    final static int semaphoreNum = 3;
+    static final int threadNum = 20;
+    static final int semaphoreNum = 3;
 
 
     public static void main(String[] args) {
