@@ -4,8 +4,7 @@ import com.sun.org.apache.regexp.internal.RE;
 
 public class RequestHoder {
 
-    private final static ThreadLocal<Long> requestHoder = new ThreadLocal<>();
-
+    private static final ThreadLocal<Long> requestHoder = new ThreadLocal<>();
 
 
     //默认Key是线程的ID ，Value 是这个Long id
