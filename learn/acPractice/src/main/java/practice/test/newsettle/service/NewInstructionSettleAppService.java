@@ -12,7 +12,7 @@ import com.xQuant.platform.app.settle.entity.SettleContext;
  * @Date 2019/8/8 13:58
  */
 public interface NewInstructionSettleAppService {
-    public final static String BEAN_NAME = "newInstructionSettleAppService";
+    public static final  String BEAN_NAME = "newInstructionSettleAppService";
 
     /**
      * 锁操作,将通过操作TTRD_TASK_ENTITY 获取状态来判断是否已经获取到了锁
