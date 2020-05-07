@@ -35,7 +35,7 @@ public class SingletonDemo1 {
     /**
      * 单例的对象
      */
-    private volatile static SingletonDemo1 instance = null;
+    private static volatile SingletonDemo1 instance = null;
 
     /**
      * 静态工厂方法
