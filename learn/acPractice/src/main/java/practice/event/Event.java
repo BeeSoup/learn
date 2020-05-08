@@ -31,8 +31,13 @@ public class Event {
         //-------------另一种方式
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyApplicationListener.class);
+        Data data = new Data("111111这是里是事件",false);
 
-        context.publishEvent(new MyApplicationEvent("111111这是里是事件"));
+        System.out.println("begin : " + data.isResult());
+
+        context.publishEvent(new MyApplicationEvent(data));
+
+        System.out.println("over : " + data.isResult());
 
 
     }
@@ -46,7 +51,14 @@ public class Event {
 
         @Override
         public void onApplicationEvent(MyApplicationEvent event) {
-            System.out.println(event.getSource().toString());
+            Data source = (Data) event.getSource();
+            System.out.println(source.getMsg());
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            source.setResult(true);
         }
     }
 
@@ -63,6 +75,32 @@ public class Event {
          */
         public MyApplicationEvent(Object source) {
             super(source);
+        }
+    }
+
+    private static class Data {
+        String msg;
+        boolean result = false;
+
+        public Data(String msg, boolean result) {
+            this.msg = msg;
+            this.result = result;
+        }
+
+        public String getMsg() {
+            return msg;
+        }
+
+        public void setMsg(String msg) {
+            this.msg = msg;
+        }
+
+        public boolean isResult() {
+            return result;
+        }
+
+        public void setResult(boolean result) {
+            this.result = result;
         }
     }
 
