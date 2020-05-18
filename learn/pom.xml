@@ -13,6 +13,7 @@
         <module>spring-mybatis</module>
         <module>spring-mq</module>
         <module>spring-concurrentcy</module>
+        <module>quickGet</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
