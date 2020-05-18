@@ -7,6 +7,10 @@ import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 
+
+/**
+ * 方法参数传递的测试以及思考
+ */
 public class NumberTest {
 
     public static void main(String[] args) throws Exception {
