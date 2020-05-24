@@ -1,5 +1,8 @@
 package com.zhangyu.quick.entity;
 
+import lombok.Data;
+
+@Data
 public class MyUser {
 
     private Long id;
