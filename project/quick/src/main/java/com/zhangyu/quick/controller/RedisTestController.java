@@ -36,4 +36,27 @@ public class RedisTestController {
 
         return "OK: " + key + ", result :" + user.toString();
     }
+
+    @PostMapping(value = "/redisTemplatePost")
+    public String redisTemplatePost(@RequestParam String key, @RequestParam Long id, @RequestParam String name) {
+        MyUser user = new MyUser();
+        user.setId(id);
+        user.setName(name);
+        boolean result = redis.templateSet(key, user, 60000l);
+        if (result) {
+            return "OK";
+        }
+        return "Error";
+    }
+
+    @GetMapping(value = "/getRedisTemplate")
+    public String getRedisTemplate(@RequestParam String key) {
+        MyUser user = MyUser.class.cast(redis.templateGet(key));
+
+        if (user == null) {
+            return "Error";
+        }
+
+        return "OK: " + key + ", result :" + user.toString();
+    }
 }

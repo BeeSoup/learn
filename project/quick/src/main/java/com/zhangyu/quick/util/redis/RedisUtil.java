@@ -4,9 +4,13 @@ import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * 以Jedis封装redis工具类
@@ -21,16 +25,20 @@ public class RedisUtil {
 
     private JedisPool jedisPool;
 
+    private RedisTemplate redisTemplate;
+
     //构造器和Set方法注入.IDEA不警告
     @Autowired
     public RedisUtil(JedisPool jedisPool) {
         this.jedisPool = jedisPool;
     }
 
-//    @Autowired
-//    public void setJedisPool(JedisPool jedisPool) {
-//        this.jedisPool = jedisPool;
-//    }
+    //set方法注入
+    @Autowired
+    public void setRedisTemplate(RedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
+
 
     public <T> boolean set(String key, T value) {
         Jedis jedis = null;
@@ -62,6 +70,69 @@ public class RedisUtil {
             returnResource(jedis);
         }
         return t;
+    }
+
+    /**
+     *
+     *
+     */
+    public <T> boolean templateSet(String key, T value) {
+        boolean result = false;
+        try {
+            ValueOperations valueOperations = redisTemplate.opsForValue();
+            valueOperations.set(key, value);
+            result = true;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    /**
+     * 过期key设置
+     */
+    public <T> boolean templateSet(String key, T value, Long expireTime) {
+        boolean result = false;
+        try {
+            ValueOperations valueOperations = redisTemplate.opsForValue();
+            valueOperations.set(key, value);
+            redisTemplate.expire(key, expireTime, TimeUnit.MILLISECONDS);
+            result = true;
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    /**
+     *
+     * @param key
+     * @return
+     */
+    public Object templateGet(String key) {
+        Object result = null;
+        try {
+            ValueOperations valueOperations = redisTemplate.opsForValue();
+            result = valueOperations.get(key);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    /**
+     *
+     * @param key
+     * @return
+     */
+    public boolean templateExists(String key) {
+        boolean result = false;
+        try {
+            result = redisTemplate.hasKey(key);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
     }
 
     //Bean转String
