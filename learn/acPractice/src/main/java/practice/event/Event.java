@@ -1,5 +1,6 @@
 package practice.event;
 
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,24 +15,23 @@ public class Event {
     public static void main(String[] args) {
 
         //创建上下文
-    //    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        //    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 
         //增加监听器
-     //   context.addApplicationListener(new MyApplicationListener());
+        //   context.addApplicationListener(new MyApplicationListener());
 //        context.addApplicationListener(new MyApplicationListener());
 
         //bean注册
-     //   context.register(MyApplicationListener.class);
+        //   context.register(MyApplicationListener.class);
 
         //启动上下文
-    //    context.refresh();
-
+        //    context.refresh();
 
 
         //-------------另一种方式
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyApplicationListener.class);
-        Data data = new Data("111111这是里是事件",false);
+        Data data = new Data("111111这是里是事件", false);
 
         System.out.println("begin : " + data.isResult());
 
@@ -39,9 +39,24 @@ public class Event {
 
         System.out.println("over : " + data.isResult());
 
+        //获取注册工程
+        DefaultListableBeanFactory beanFactory = context.getDefaultListableBeanFactory();
+
+
+        DefaultClass instance = new DefaultClass();
+        beanFactory.registerSingleton("myRegisterBean", instance);
+
+//        beanFactory.registerBeanDefinition();
+//        beanFactory.destroySingleton();
+        Object myRegisterBean = context.getBean("myRegisterBean");
+
+        if (myRegisterBean instanceof DefaultClass) {
+            DefaultClass cast = DefaultClass.class.cast(myRegisterBean);
+            cast.print();
+        }
+
 
     }
-
 
 
     //自定义监听
@@ -101,6 +116,12 @@ public class Event {
 
         public void setResult(boolean result) {
             this.result = result;
+        }
+    }
+
+    private static class DefaultClass {
+        public void print() {
+            System.out.println(" this Bean is IOC");
         }
     }
 
