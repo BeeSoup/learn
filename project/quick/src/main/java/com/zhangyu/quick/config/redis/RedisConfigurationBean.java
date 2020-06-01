@@ -16,6 +16,9 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+/**
+ *
+ */
 @Configuration
 @PropertySource(value = "classpath:/config/redis/redis.properties")
 @ConfigurationProperties(prefix = "zhangyu")
