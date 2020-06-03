@@ -48,38 +48,12 @@
 
 		<!-- JDBC -->
 
-		<!--<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>-->
-
-		<!-- Mysql -->
-		<!--
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
 		</dependency>
-		-->
 
 
-		<!-- mybatis -->
-		<!--
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>2.1.2</version>
-		</dependency>
-	-->
-
-		<!-- alibaba的druid数据库连接池 -->
-		<!--
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>1.1.13</version>
-		</dependency>
- 	-->
 		<!-- redis jedis客户端 -->
 		<!--
 		<dependency>
@@ -126,6 +100,8 @@
 
 	<dependencyManagement>
 		<dependencies>
+
+			<!--Spring Cloud 版本控制 -->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -133,6 +109,31 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<!-- mybatis  版本在这里控制-->
+
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>2.1.2</version>
+			</dependency>
+
+			<!-- Mysql -->
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>8.0.20</version>
+			</dependency>
+
+			<!-- alibaba的druid数据库连接池 -->
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>1.1.13</version>
+            </dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

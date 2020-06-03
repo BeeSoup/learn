@@ -1,5 +1,6 @@
 package com.zhangyu.quick.system;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 @SpringBootApplication
 @EnableEurekaClient
+@MapperScan()
 public class BusinessSystemBootstrap {
 
     private static Logger log = LoggerFactory.getLogger(BusinessSystemBootstrap.class);
