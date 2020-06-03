@@ -1,4 +1,5 @@
-package com.zhangyu.quick;
+package com.zhangyu.quick.gateway;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,19 +11,18 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class BusinessSystemBootstrap {
+public class GateWayBootstrap {
 
-    private static Logger log = LoggerFactory.getLogger(BusinessSystemBootstrap.class);
+    private static Logger log = LoggerFactory.getLogger(GateWayBootstrap.class);
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = new SpringApplicationBuilder(BusinessSystemBootstrap.class)
+        ConfigurableApplicationContext context = new SpringApplicationBuilder(GateWayBootstrap.class)
                 .build(args)
                 .run();
         ConfigurableEnvironment environment = context.getEnvironment();
 
         log.info("start");
 
-        log.info("业务系统地址: \t http://127.0.0.1:{}", environment.getProperty("server.port"));
+        log.info("网关系统地址: \t http://127.0.0.1:{}", environment.getProperty("server.port"));
     }
-
 }
