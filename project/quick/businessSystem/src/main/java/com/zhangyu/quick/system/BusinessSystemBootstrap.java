@@ -11,7 +11,8 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan()
+//配置扫描路径
+@MapperScan(value = "com.zhangyu.quick.system.mapper")
 public class BusinessSystemBootstrap {
 
     private static Logger log = LoggerFactory.getLogger(BusinessSystemBootstrap.class);

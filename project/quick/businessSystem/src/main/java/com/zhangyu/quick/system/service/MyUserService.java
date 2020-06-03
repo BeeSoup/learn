@@ -1,7 +1,7 @@
 package com.zhangyu.quick.system.service;
 
-import com.zhangyu.quick.system.controller.dao.UserAnnotationMapper;
-import com.zhangyu.quick.system.controller.domain.MyUser;
+import com.zhangyu.quick.system.mapper.UserAnnotationMapper;
+import com.zhangyu.quick.system.domain.MyUser;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

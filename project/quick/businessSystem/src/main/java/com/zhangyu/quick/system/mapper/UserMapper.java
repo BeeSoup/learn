@@ -1,6 +1,6 @@
-package com.zhangyu.quick.system.controller.dao;
+package com.zhangyu.quick.system.mapper;
 
-import com.zhangyu.quick.system.controller.domain.MyUser;
+import com.zhangyu.quick.system.domain.MyUser;
 import org.springframework.stereotype.Repository;
 
 @Repository
