@@ -28,7 +28,7 @@ public class QuickTestController {
 
     @RequestMapping(value = "/yes")
     public String yes() {
-        return "success";
+        return "success:OK";
     }
 
     //    @GetMapping(value = "/getAnnotationUserTest")
