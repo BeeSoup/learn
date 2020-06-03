@@ -1,4 +1,4 @@
-package com.zhangyu.server.config;
+package com.zhangyu.server.config.mybatis;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;

@@ -61,13 +61,8 @@
 			<artifactId>jedis</artifactId> -->
 			<!--<version>2.9.0</version> -->
 
-		<!--</dependency>
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.44</version>
-		</dependency>-->
 
 
 		<!-- MQ的轻量级依赖 -->
@@ -139,11 +134,18 @@
 				<optional>true</optional>
             </dependency>
 
-			<!-- mybatis分页插件pagehelper -->
+			<!-- mybatis分页插件 pageHelper -->
 			<dependency>
 				<groupId>com.github.pagehelper</groupId>
 				<artifactId>pagehelper-spring-boot-starter</artifactId>
 				<version>1.2.10</version>
+				<optional>true</optional>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>1.2.60</version>
 				<optional>true</optional>
 			</dependency>
 

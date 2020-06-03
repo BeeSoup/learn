@@ -1,16 +1,17 @@
 package com.zhangyu.quick.system.controller;
 
 import com.zhangyu.server.domain.MyUser;
+import com.zhangyu.server.dto.ResponseDto;
 import com.zhangyu.server.mybatis.MyUserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.zhangyu.server.util.ValidatorUtil;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 @RestController
 public class QuickTestController {
+
+    public static final String BUSINESS_NAME = "Business";
 
     @Resource
     private MyUserService myUserService;
@@ -38,6 +39,25 @@ public class QuickTestController {
 //    }
 //
 //
+
+    //直接从参数上取 然后映射上去
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseDto delete(@PathVariable String id) {
+        ResponseDto responseDto = new ResponseDto();
+        responseDto.setMessage(id + "is Delete");
+        return responseDto;
+    }
+
+
+    @GetMapping(value = "/exception")
+    public String exception() {
+        boolean flag = true;
+        if (flag) {
+            ValidatorUtil.require("S211","DDD");
+        }
+        return "OK";
+    }
+
     @GetMapping(value = "/getUserTest")
     public String getUserTest(@RequestParam Long id) {
         MyUser myUser = myUserService.selectUserById(id);

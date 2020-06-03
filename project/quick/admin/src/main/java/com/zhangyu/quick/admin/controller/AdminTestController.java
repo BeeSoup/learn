@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 
 @RestController
 public class AdminTestController {
+    public static final String BUSINESS_NAME = "Admin";
 
     @Resource
     private RemoteFeign remoteFeign;
