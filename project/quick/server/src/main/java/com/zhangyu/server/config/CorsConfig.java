@@ -41,13 +41,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 版权声明：本文为CSDN博主「L瑜」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
  * 原文链接：https://blog.csdn.net/lambert310/article/details/51683775
  *
+ *
+ * 网关配置跨域，然后业务层面的代码，不配置跨域信息
+ *
  * 协议不同
  * 端口不同
  * 主域名不同
  * 子域名不同
  * 跨域
  */
-@Configuration
+//@Configuration
 public class CorsConfig implements WebMvcConfigurer {
 
     @Override
