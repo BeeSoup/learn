@@ -5,6 +5,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>eurekaServer</module>
+		<module>businessSystem</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -58,11 +59,7 @@
 			<scope>runtime</scope>
 		</dependency>
 		-->
-		<!-- springboot web -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+
 
 		<!-- mybatis -->
 		<!--
