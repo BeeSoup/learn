@@ -13,6 +13,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 @EnableEurekaClient
 // 激活openFeign既可以通过Feign进行服务调用
 @EnableFeignClients
+    //(basePackages = "com.zhangyu.feign")
 // value值表示: 本次负载均衡算法作用到的服务名称
 // configuration属性值表示: 自定义的算法类的Class对象
 //(如果我们不使用RibbonClient注解,openFeign会默认使用Ribbon的轮询算法)
