@@ -1,7 +1,7 @@
-package com.zhangyu.quick.system.mapper;
+package com.zhangyu.server.mapper;
 
 
-import com.zhangyu.quick.system.domain.MyUser;
+import com.zhangyu.server.domain.MyUser;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;

@@ -24,6 +24,8 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
+
+
         <!-- Mysql -->
 
         <dependency>
@@ -32,6 +34,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- JDBC -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
 
         <!-- mybatis -->
 
@@ -40,6 +48,7 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
 
+        <!-- 数据库连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
@@ -52,6 +61,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+        <!-- 公共依赖 -->
+        <dependency>
+            <groupId>com.zhangyu</groupId>
+            <artifactId>server</artifactId>
         </dependency>
 
     </dependencies>

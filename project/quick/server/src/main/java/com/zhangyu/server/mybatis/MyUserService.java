@@ -1,7 +1,7 @@
-package com.zhangyu.quick.system.service;
+package com.zhangyu.server.mybatis;
 
-import com.zhangyu.quick.system.mapper.UserAnnotationMapper;
-import com.zhangyu.quick.system.domain.MyUser;
+import com.zhangyu.server.mapper.UserAnnotationMapper;
+import com.zhangyu.server.domain.MyUser;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

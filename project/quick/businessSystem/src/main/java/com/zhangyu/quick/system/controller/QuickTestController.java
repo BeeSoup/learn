@@ -1,7 +1,7 @@
 package com.zhangyu.quick.system.controller;
 
-import com.zhangyu.quick.system.domain.MyUser;
-import com.zhangyu.quick.system.service.MyUserService;
+import com.zhangyu.server.domain.MyUser;
+import com.zhangyu.server.mybatis.MyUserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

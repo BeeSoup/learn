@@ -1,6 +1,6 @@
-package com.zhangyu.quick.system.mapper;
+package com.zhangyu.server.mapper;
 
-import com.zhangyu.quick.system.domain.MyUser;
+import com.zhangyu.server.domain.MyUser;
 import org.springframework.stereotype.Repository;
 
 @Repository
