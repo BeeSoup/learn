@@ -30,7 +30,9 @@ public class FileController {
     public ResponseDto postFile(@RequestParam MultipartFile file) {
 
         ResponseDto result = new ResponseDto();
+        String name = file.getName();
         String fileName = file.getOriginalFilename();
+        log.info(String.format("-----name: %s", name));
         log.info(String.format("-----fileName: %s", fileName));
         String uuid = UuidUtil.getUuid();
         log.info(String.format("-----uuid: %s", uuid));
