@@ -1,6 +1,5 @@
-package com.zhangyu.quick.config.rabbitmq;
+package com.zhangyu.server.config.rabbitmq;
 
-import com.alibaba.druid.sql.visitor.functions.Bin;
 import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +19,7 @@ public class RabbitMqConfig {
 
     /**
      * 注意引用的类型import
-     * {@link org.springframework.amqp.core.Queue}
+     * {@link Queue}
      */
     @Bean
     public Queue sentQueue() {

@@ -77,6 +77,13 @@
             <artifactId>jedis</artifactId>
         </dependency>
 
+
+        <!-- MQ的轻量级依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
         <!-- 热部署 devTools -->
 
         <dependency>
