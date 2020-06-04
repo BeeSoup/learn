@@ -66,6 +66,17 @@
         </dependency>
 
 
+        <!-- redis jedis 客户端 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
         <!-- 热部署 devTools -->
 
         <dependency>

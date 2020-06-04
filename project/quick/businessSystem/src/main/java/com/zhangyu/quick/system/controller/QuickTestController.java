@@ -14,7 +14,7 @@ public class QuickTestController {
     public static final String BUSINESS_NAME = "Business";
 
     @Resource
-    private MyUserService myUserService;
+    MyUserService myUserService;
 //
 //    @Autowired
 //    private UserMapper userMapper;

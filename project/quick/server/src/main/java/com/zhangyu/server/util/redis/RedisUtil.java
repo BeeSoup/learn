@@ -1,6 +1,7 @@
-package com.zhangyu.quick.util.redis;
+package com.zhangyu.server.util.redis;
 
 import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 以Jedis封装redis工具类
+ *        或者使用redisTemplate 封装一下
  */
 @Component(value = "redis")
+@Slf4j
 public class RedisUtil {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -65,6 +68,9 @@ public class RedisUtil {
         try {
             jedis = jedisPool.getResource();
             String redisValue = jedis.get(key);
+            if (redisValue == null) {
+                return null;
+            }
             t = stringToBean(redisValue, clazz);
         } finally {
             returnResource(jedis);
