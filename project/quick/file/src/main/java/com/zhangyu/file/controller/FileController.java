@@ -36,6 +36,7 @@ public class FileController {
         log.info(String.format("-----uuid: %s", uuid));
 
         //设置上传路径，放项目的相对路径了
+        // 启动参数里，可以配置，用配置比较好，动态配置，放properties也可以
         String projectPath = System.getProperty("user.dir"); //项目地址
         //判断系统吧，感觉要，windows 和unix /linux
         //
@@ -49,7 +50,7 @@ public class FileController {
             pathChar = "\\SaveFile\\";
         }
         //保存uuid可以存数据库，获取解析找。
-        String fullPath = projectPath + pathChar + uuid + " -" + fileName;
+        String fullPath = projectPath + pathChar + uuid + "-" + fileName;
         log.info(String.format("------fullPath: %s", fullPath));
 
         File saveFile = new File(fullPath);
