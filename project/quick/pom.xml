@@ -31,7 +31,7 @@
     </properties>
 
 
-    <!-- 继承父pom的， 直接由pom控制，不自定版本，以免报错，垃圾spring ，看不上眼就不整合，笑死 -->
+    <!-- 父pom -->
     <dependencies>
 
         <!-- lombok -->
