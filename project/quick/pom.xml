@@ -31,6 +31,10 @@
         <com.alibaba.fastjson.version>1.2.60</com.alibaba.fastjson.version>
     </properties>
 
+    <!-- -D跳过测试用例，-U强制打包 -->
+    <!-- package mvn command : mvn clean package -Dmaven.test.skip=true -U   -->
+    <!-- start command : java -jar XXXX.jar ( 再加启动参数，注意了 两杠 ) -->
+    <!-- 或者过滤掉内嵌的tomcat ,直接使用外部的tomcat, 启动，打包方式应该调整为war的形式 -->
 
     <!-- 父pom -->
     <dependencies>
