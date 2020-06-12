@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 // value属性的值是: 提供服务的消费方的服务名称,必须指定,否则无法找到对应的服务
 @FeignClient(value = "businessSystem"
 //        , fallbackFactory = UserServiceFallbackFactory.class
+        ,fallback = RemoteFeignFallback.class
 )
 public interface RemoteFeign {
 
