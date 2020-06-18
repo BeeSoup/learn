@@ -2,6 +2,7 @@ package com.zhangyu.ali.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * spring-cloud-alibaba
@@ -10,6 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 注释写法规则的学习。
  * 起步阶段。
  */
+
+@MapperScan("com.zhangyu")
 @SpringBootApplication
 public class CloudApplication {
 
