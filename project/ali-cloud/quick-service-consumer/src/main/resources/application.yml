@@ -2,6 +2,9 @@
 
 #所有环境公用的配置属性
 
+zhangyu:
+  service:
+    provider: quick-service-provider
 # 显示health 的所有信息
 #management.endpoint.health.show-details=always
 management:
@@ -15,14 +18,19 @@ management:
     web:
       exposure:
         include: '*'
-info:
-  myName: 'zhangyu'
-  export: ${EXPORT}
 #默认启动
 spring:
   profiles:
     active: dev
+# 服务名称尽量用-，不要用_也不要使用特殊字符
+  application:
+    name: quick-service-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 #info. key 和value形式
+
 #连字符
 ---
 
@@ -37,15 +45,13 @@ spring:
       #<=5.x com.mysql.jdbc.Driver
       driver-class-name: com.mysql.cj.jdbc.Driver
 
-# profile=x专用属性，也就是某个环境下的专用属性
+# profile=dev专用属性，也就是某个环境下的专用属性
 #比如开发
 server:
-  port: 9090
+  port: 8010
 ---
 spring:
  profiles: product
-
-
-#profile=y 的专用属性
+#profile=product 的专用属性
 server:
   port: 8090
