@@ -40,6 +40,14 @@ public class ConsumerController {
         //
         String response = this.restTemplate.getForObject(url, String.class);
 //        String response = restTemplateUnLoadBalance.getForObject(urlIP, String.class, value);
+        String localBalanceURI = this.getInstance().stream()
+                .map((serviceInstance) -> {
+                    return serviceInstance.getUri() + "/echo/" + value;
+                })
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("没有数据"));
+
+        //        String response = restTemplateUnLoadBalance.getForObject(localBalanceURI, String.class, value);
         log.info("response： \t {}", response);
         return response;
     }
