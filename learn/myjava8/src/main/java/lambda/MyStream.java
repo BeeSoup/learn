@@ -15,19 +15,22 @@ import java.util.stream.Stream;
  *  flatMap 把流转成成内容，多个流合成一个流
  *
  *  limit  row<n 前， skip 跳过前 row>n  distinct 通过hashCode 和equals 去重
+ * @author zhangyu30939
  */
 public class MyStream {
     public static void main(String[] args) {
         List<Integer> integers = Arrays.asList(new Integer[]{1, 2, 3, 4, 5});
         Stream<Integer> integerStream = integers.parallelStream();
+
         Stream<Integer> stream = integers.stream();
 //        Arrays.stream("")
 //        Stream.of() //可变参，可以接受数组
         // Stream.iterate(0, (x) -> x + 2); //
         //Stream.generate(() -> Math.random()).limit(10).forEach(System.out::println);
         //  Stream.generate(() -> Math.random()).limit(10).forEach(System.out::println);
+        int i = 3;
         integerStream.filter((x) -> {
-            if (x > 3) {
+            if (x > i) {
                 return true;
             }
             return false;
