@@ -27,6 +27,11 @@ public class QuickTestController {
         return who + " : OK";
     }
 
+    @PostMapping(value = "/postTest")
+    public String getPostTest(@RequestParam String who) {
+        return who + " : OK";
+    }
+
     @RequestMapping(value = "/yes")
     public String yes() {
         return "success:OK";

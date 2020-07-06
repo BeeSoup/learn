@@ -1,0 +1,12 @@
+#spring:
+#  application:
+#    name: eurekaServer
+
+#server:
+#  port: 10100 # eurekaServer 端口
+
+
+#eureka:
+# client:
+#    register-with-eureka: false #是否要注册到其他Server上   registerWithEureka等同于register_with_eureka
+#    fetch-registry: false #是否获取注册信息       fetchRegistry等同于 fetch-registry

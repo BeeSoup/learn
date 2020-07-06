@@ -21,6 +21,39 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
+
+        <!--hystrix熔断器-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+
+        <!--路由重试功能【Spring异常重试框架Spring Retry】-->
+        <!--<dependency>
+          <groupId>org.springframework.retry</groupId>
+          <artifactId>spring.retry</artifactId>
+        </dependency>-->
+
+        <!--使用redis的lua语言进行[ip,接口,用户限流操作]-->
+        <!--
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency> -->
+        <!-- 热部署 devTools -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+        <!-- 公共依赖 -->
+        <dependency>
+            <groupId>com.zhangyu</groupId>
+            <artifactId>server</artifactId>
+        </dependency>
+
+
     </dependencies>
 
 </project>
