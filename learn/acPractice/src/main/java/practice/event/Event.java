@@ -40,7 +40,7 @@ public class Event {
         System.out.println("over : " + data.isResult());
 
         //获取注册工程
-        DefaultListableBeanFactory beanFactory = context.();
+        DefaultListableBeanFactory beanFactory = context.getDefaultListableBeanFactory();
 
 
         DefaultClass instance = new DefaultClass();
