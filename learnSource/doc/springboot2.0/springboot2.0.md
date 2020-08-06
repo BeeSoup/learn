@@ -14,3 +14,8 @@
    * 实现： XXXAutoConfiguration  规约形式
 
 ##与Web的联系
+
+
+##springboot启动
+###spring-boot-autoconfigure/spring.factories 
+ > 这里配置了springboot的启动文件，包括Initializers 初始化入口 key为接口
