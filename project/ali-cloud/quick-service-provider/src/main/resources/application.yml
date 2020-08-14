@@ -21,10 +21,10 @@ spring:
     active: dev
   application:
     name: quick-service-provider
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8848
+ # cloud:
+  #  nacos:
+   #  discovery:
+     #   server-addr: 127.0.0.1:8848
 #info. key 和value形式
 
 #连字符
@@ -40,16 +40,55 @@ spring:
       #>=6.x com.mysql.cj.jdbc.Driver
       #<=5.x com.mysql.jdbc.Driver
       driver-class-name: com.mysql.cj.jdbc.Driver
-
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: b4826df8-24e5-4472-9e77-78ab775e160e
+        cluster-name: firstCluster
+        metadata:
+          mykey: myvalue
 # profile=dev专用属性，也就是某个环境下的专用属性
 #比如开发
 server:
   port: 8009
 ---
 spring:
- profiles: product
-
-
+  profiles: product1
+  datasource:
+    url: jdbc:mysql://101.37.81.92:3306/xir
+    hikari:
+      username: root
+      password: zhangyu110
+      #>=6.x com.mysql.cj.jdbc.Driver
+      #<=5.x com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: b4826df8-24e5-4472-9e77-78ab775e160e
+        cluster-name: twoCluster
 #profile=product 的专用属性
 server:
-  port: 8090
+  port: 8010
+---
+spring:
+  profiles: product2
+  datasource:
+    url: jdbc:mysql://101.37.81.92:3306/xir
+    hikari:
+      username: root
+      password: zhangyu110
+      #>=6.x com.mysql.cj.jdbc.Driver
+      #<=5.x com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: b4826df8-24e5-4472-9e77-78ab775e160e
+        cluster-name: twoCluster
+#profile=product 的专用属性
+server:
+  port: 8011

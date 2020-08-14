@@ -48,7 +48,7 @@ spring:
 # profile=dev专用属性，也就是某个环境下的专用属性
 #比如开发
 server:
-  port: 8010
+  port: 8100
 ---
 spring:
  profiles: product

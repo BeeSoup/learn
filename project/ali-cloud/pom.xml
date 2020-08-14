@@ -76,6 +76,10 @@
     </dependencies>
 
 
+    <!--spring-boot-starter-xxxx -->
+    <!--xxx-spring-boot-starter -->
+    <!--spring-cloud-starter-{spring cloud 子项目的名称}-[{模块名词}] -->
+
     <dependencyManagement>
         <dependencies>
             <!--        先需要整合springCloud 注意版本-->
@@ -106,11 +110,11 @@
             </dependency>
 
             <!--通用mapper-->
-            <dependency>
+         <!--   <dependency>
                 <groupId>tk.mybatis</groupId>
                 <artifactId>mapper-spring-boot-starter</artifactId>
                 <version>2.1.5</version>
-            </dependency>
+            </dependency>-->
 
             <dependency>
                 <groupId>mysql</groupId>
