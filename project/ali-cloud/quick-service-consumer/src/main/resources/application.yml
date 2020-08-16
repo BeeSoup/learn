@@ -1,24 +1,24 @@
 # YAML YML 配置文件，环境变量 ${}  -DskipTests -D.skip.test 会读Jar 同级的配置文件，且比内部更要优先 命令行参数也可以 17种优先级，尽量避免优先级
 
-#所有环境公用的配置属性
+# 所有环境公用的配置属性
 
 zhangyu:
   service:
     provider: quick-service-provider
 # 显示health 的所有信息
-#management.endpoint.health.show-details=always
+# management.endpoint.health.show-details=always
 management:
   endpoint:
     health:
       show-details: always
   # 激活所有的端点， 默认只有info 和health configprops
-  #/metrics/name（key端点查看对应的信息）
-  #management.endpoints.web.exposure.include=*
+  # /metrics/name（key端点查看对应的信息）
+  # management.endpoints.web.exposure.include=*
   endpoints:
     web:
       exposure:
         include: '*'
-#默认启动
+# 默认启动
 spring:
   profiles:
     active: dev
@@ -29,9 +29,22 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-#info. key 和value形式
+# info. key 和value形式
 
-#连字符
+# 自定义负载均衡策略 服务名。ribbon.NFLoadBalancerRuleClassName
+# 优先级高于代码
+# quick-service-provider:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+# ribbon 首次启动懒加载，启动很慢 细粒度配置 什么服务 饥饿加载
+ribbon:
+  eager-load:
+    enabled: true
+    clients: quick-service-provider,quick-service-provider
+
+
+# 连字符
 ---
 
 spring:
@@ -46,12 +59,12 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
 
 # profile=dev专用属性，也就是某个环境下的专用属性
-#比如开发
+# 比如开发
 server:
   port: 8100
 ---
 spring:
  profiles: product
-#profile=product 的专用属性
+# profile=product 的专用属性
 server:
   port: 8090

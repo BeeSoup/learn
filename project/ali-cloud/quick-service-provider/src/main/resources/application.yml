@@ -44,8 +44,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-        namespace: b4826df8-24e5-4472-9e77-78ab775e160e
-        cluster-name: firstCluster
+        # namespace: b4826df8-24e5-4472-9e77-78ab775e160e
+        # cluster-name: firstCluster
         metadata:
           mykey: myvalue
 # profile=dev专用属性，也就是某个环境下的专用属性
@@ -67,8 +67,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-        namespace: b4826df8-24e5-4472-9e77-78ab775e160e
-        cluster-name: twoCluster
+      # namespace: b4826df8-24e5-4472-9e77-78ab775e160e
+      # cluster-name: twoCluster
 #profile=product 的专用属性
 server:
   port: 8010
@@ -87,8 +87,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-        namespace: b4826df8-24e5-4472-9e77-78ab775e160e
-        cluster-name: twoCluster
+      # namespace: b4826df8-24e5-4472-9e77-78ab775e160e
+      # cluster-name: twoCluster
 #profile=product 的专用属性
 server:
   port: 8011
