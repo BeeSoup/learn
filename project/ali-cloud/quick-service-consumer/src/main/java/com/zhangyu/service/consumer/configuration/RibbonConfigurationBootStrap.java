@@ -1,5 +1,6 @@
 package com.zhangyu.service.consumer.configuration;
 
+import com.zhangyu.service.ribbonconfiguration.RibbonConfiguration;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,5 +13,5 @@ import org.springframework.context.annotation.Configuration;
         RibbonConfiguration.class
 })
 @Configuration
-public class RibbonConfiguration {
+public class RibbonConfigurationBootStrap {
 }
