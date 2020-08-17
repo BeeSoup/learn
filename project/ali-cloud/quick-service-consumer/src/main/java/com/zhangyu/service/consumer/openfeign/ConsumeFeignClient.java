@@ -22,11 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author zhang
  * @Date 2020/08/17
  */
+//@FeignClient(
+//        name= "${zhangyu.service.provider}",
+//        configuration = {
+//                ConsumeFeignClientConfiguration.class
+//        }
+//)
 @FeignClient(
-        name= "${zhangyu.service.provider}",
-        configuration = {
-                ConsumeFeignClientConfiguration.class
-        }
+        name= "${zhangyu.service.provider}"
 )
 public interface ConsumeFeignClient {
 

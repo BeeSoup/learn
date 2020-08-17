@@ -7,10 +7,10 @@
  * ========    =======  ============================================
  */
 
-package com.zhangyu.service.consumer.configuration;
+package com.zhangyu.service.consumer.openfeign;
 
-import feign.Logger;
-import org.springframework.context.annotation.Bean;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * 功能说明:
@@ -18,11 +18,13 @@ import org.springframework.context.annotation.Bean;
  * @author zhang
  * @Date 2020/08/17
  */
-public class ConsumeFeignClientConfiguration {
+@FeignClient(
+        name = "baidu",
+        url = "http://www.baidu.com"
+)
+public interface TestBaiduFeignClient {
 
-    @Bean
-    public Logger.Level level() {
-        return Logger.Level.FULL;
-    }
-    //
+    @GetMapping("")
+    String index();
 }
+

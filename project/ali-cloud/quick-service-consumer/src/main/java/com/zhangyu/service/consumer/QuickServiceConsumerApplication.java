@@ -15,6 +15,10 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @EnableDiscoveryClient
 @EnableFeignClients
+// 全局配置
+//@EnableFeignClients(defaultConfiguration = {
+//
+//})
 @SpringBootApplication
 public class QuickServiceConsumerApplication {
 

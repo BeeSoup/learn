@@ -4,7 +4,7 @@
 
 zhangyu:
   service:
-    provider: quick-service-provider
+    provider: &providerName quick-service-provider
 # 显示health 的所有信息
 # management.endpoint.health.show-details=always
 management:
@@ -29,7 +29,12 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-# info. key 和value形式
+
+# 多个客户端同一个服务，会报错，无法生成代理，设置为true
+  main:
+    allow-bean-definition-overriding: true
+    # info. key 和value形式
+
 
 # 自定义负载均衡策略 服务名。ribbon.NFLoadBalancerRuleClassName
 # 优先级高于代码
@@ -43,11 +48,29 @@ ribbon:
     enabled: true
     clients: quick-service-provider,quick-service-provider
 
+# 启动feign的日志打印，起码，这个级别要配置为debug
 logging:
   level:
+    com.zhangyu.service.consumer.openfeign.ConsumeFeignClient: debug
 
-
-
+feign:
+  client:
+    config:
+      # 想要调用的服务的名称
+      # 无法使用，或者说，不知道如何书写${zhangyu.service.provider}: 使用&锚点，以及*引用来使用 不能直接使用${}来操作
+      # quick-service-provider:
+      # default 全局配置
+      *providerName:
+        loggerLevel: full
+  httpclient:
+    # 让feign使用apache httpclient做请求，而不是默认的urlConnection
+    # enabled: true
+    # 最大连接数
+    max-connections: 200
+    # 单个路径的最大连接数
+    max-connections-per-router: 50
+    okhttp:
+      enabled: true
 # 连字符
 ---
 
