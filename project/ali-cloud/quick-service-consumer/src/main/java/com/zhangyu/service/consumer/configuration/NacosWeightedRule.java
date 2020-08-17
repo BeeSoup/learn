@@ -18,8 +18,8 @@ import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.AbstractLoadBalancerRule;
 import com.netflix.loadbalancer.BaseLoadBalancer;
 import com.netflix.loadbalancer.Server;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * 功能说明:
@@ -27,6 +27,7 @@ import org.springframework.stereotype.Component;
  * @author zhang
  * @Date 2020/08/14
  */
+@Slf4j
 public class NacosWeightedRule extends AbstractLoadBalancerRule {
 
     @Autowired

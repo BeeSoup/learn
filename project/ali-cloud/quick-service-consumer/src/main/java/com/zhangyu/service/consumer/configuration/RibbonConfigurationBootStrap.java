@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration;
 //})
 //@Configuration
 // 全局配置ribbon
-@RibbonClients(defaultConfiguration = {
-        RibbonConfiguration.class
-})
+//@RibbonClients(defaultConfiguration = {
+//        RibbonConfiguration.class
+//})
 @Configuration
 public class RibbonConfigurationBootStrap {
 }

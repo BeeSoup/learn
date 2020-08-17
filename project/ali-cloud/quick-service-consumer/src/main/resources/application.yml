@@ -22,7 +22,7 @@ management:
 spring:
   profiles:
     active: dev
-# 服务名称尽量用-，不要用_也不要使用特殊字符
+  # 服务名称尽量用-，不要用_也不要使用特殊字符
   application:
     name: quick-service-consumer
   cloud:
@@ -42,6 +42,10 @@ ribbon:
   eager-load:
     enabled: true
     clients: quick-service-provider,quick-service-provider
+
+logging:
+  level:
+
 
 
 # 连字符
@@ -64,7 +68,7 @@ server:
   port: 8100
 ---
 spring:
- profiles: product
+  profiles: product
 # profile=product 的专用属性
 server:
   port: 8090
