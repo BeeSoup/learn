@@ -29,7 +29,13 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-
+    sentinel:
+      filter:
+        # 关闭springMVC的端点保护
+        enabled: false
+      transport:
+        # port: 8719
+        dashboard: 127.0.0.1:8280
 # 多个客户端同一个服务，会报错，无法生成代理，设置为true
   main:
     allow-bean-definition-overriding: true
