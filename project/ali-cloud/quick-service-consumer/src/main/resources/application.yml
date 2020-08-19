@@ -34,8 +34,9 @@ spring:
         # 关闭springMVC的端点保护
         enabled: false
       transport:
-        # port: 8719
-        dashboard: 127.0.0.1:8280
+        # java -Dserver.port=8847 -Dcsp.sentinel.dashboard.server=localhost:8847 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar
+        port: 8719
+        dashboard: 127.0.0.1:8847
 # 多个客户端同一个服务，会报错，无法生成代理，设置为true
   main:
     allow-bean-definition-overriding: true
@@ -77,6 +78,9 @@ feign:
     max-connections-per-router: 50
     okhttp:
       enabled: true
+  sentinel:
+    # 为feign 整合sentinel
+    enabled: true
 # 连字符
 ---
 

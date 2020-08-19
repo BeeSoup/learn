@@ -1,5 +1,6 @@
 package com.zhangyu.service.consumer;
 
+import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,12 +34,31 @@ public class QuickServiceConsumerApplication {
     }
 
 
+    /**
+     * 支持ribbon的负载均衡
+     * @return
+     */
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
+    /**
+     * 整合sentinel restTemplate
+     * @return
+     */
+    @Bean
+    @LoadBalanced
+    @SentinelRestTemplate
+    public RestTemplate restTemplate2() {
+        return new RestTemplate();
+    }
+
+    /**
+     * 普通的restTemplate
+     * @return
+     */
     @Bean
     public RestTemplate restTemplateUnLoadBalance() {
         return new RestTemplate();

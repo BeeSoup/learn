@@ -9,6 +9,8 @@
 
 package com.zhangyu.service.consumer.openfeign;
 
+import com.zhangyu.service.consumer.sentinel.FeignFallbackFactorySentinel;
+import com.zhangyu.service.consumer.sentinel.FeignFallbackSentinel;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -20,7 +22,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @FeignClient(
         name = "baidu",
-        url = "http://www.baidu.com"
+        url = "http://www.baidu.com",
+//        fallback = FeignFallbackSentinel.class, 二选一
+        fallbackFactory = FeignFallbackFactorySentinel.class
 )
 public interface TestBaiduFeignClient {
 
