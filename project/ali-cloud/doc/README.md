@@ -1,3 +1,7 @@
+父类.class.isAssignableFrom(子类.class)   
+子类实例 instance of 父类
+
+
 #####微服缺点：
 > 业务稳定
 
