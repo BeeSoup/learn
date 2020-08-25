@@ -48,13 +48,6 @@
         </filter>
     </appender>
 
-    <logger name="com.hundsun.obrain.dao" additivity="false" level="DEBUG">
-        <appender-ref ref="STDOUTSQL"/>
-    </logger>
-    <logger name="com.hundsun.bamop.infodisclosuresales.dao" additivity="false" level="DEBUG">
-        <appender-ref ref="STDOUTSQL"/>
-    </logger>
-
     <!--<root level="ERROR">-->
         <!--<appender-ref ref="ERROR_FILE"/>-->
     <!--</root>-->
