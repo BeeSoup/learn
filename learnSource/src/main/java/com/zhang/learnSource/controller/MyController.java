@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -40,8 +41,8 @@ public class MyController {
     public String myArr(@RequestBody JSONObject jsonObject) {
         TypeReference<List<Dto>> typeReference = new TypeReference<List<Dto>>() {
         };
-        String dtos1 = jsonObject.getString("dtos");
-        List<Dto> dtos = JSON.parseObject(dtos1, typeReference);
+        String dtoStr1 = jsonObject.getString("dtos");
+        List<Dto> dtoList = JSON.parseObject(dtoStr1, typeReference);
         return "AMD YES";
     }
 
@@ -51,9 +52,10 @@ public class MyController {
         String versionInfoStr = jsonObject.getString("dtos");
         TypeReference<List<Dto>> typeReference = new TypeReference<List<Dto>>() {
         };
-        List<Dto> dtos = JSON.parseObject(versionInfoStr, typeReference);
+        List<Dto> dtoList = JSON.parseObject(versionInfoStr, typeReference);
         return "AMD YES";
     }
+
     @RequestMapping(value = "/arr5")
     public String myArr(@RequestBody Dto[] dtos) {
         return "AMD YES";
@@ -65,8 +67,8 @@ public class MyController {
     }
 
     @Data
-    static class Dto2 implements Serializable{
-        private Dto[] dtos;
+    static class Dto2 implements Serializable {
+        private Dto[] dtoArray;
     }
 
     @Data
@@ -74,4 +76,23 @@ public class MyController {
         private String name;
         private Integer age;
     }
+//
+//    public static void main(String[] args) {
+//        List<String> data = Collections.emptyList();
+//
+//        List<Integer> data2 = Collections.emptyList();
+//
+//
+//        data = data2;
+//
+//    }
+//
+//    void doConvert(List<String> data) {
+//
+//    }
+//
+//    void doConvert(List<Integer> data2) {
+//
+//    }
+
 }
