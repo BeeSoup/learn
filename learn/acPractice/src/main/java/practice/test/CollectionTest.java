@@ -1,5 +1,8 @@
 package practice.test;
 
+import lombok.extern.slf4j.Slf4j;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -7,10 +10,11 @@ import java.util.List;
 
 /**
  * 测试一下 关于数组是否能存放不同长度的类型，
- *            集合能否定义基本数据类型
+ * 集合能否定义基本数据类型
  */
+@Slf4j
 public class CollectionTest {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main1(String[] args) throws InterruptedException {
         Object[] objects = {"JAVA8", 8, new CollectionTest()};
         Collection collection = new ArrayList();
         collection.add(8);
@@ -30,8 +34,8 @@ public class CollectionTest {
         //	at java.util.ArrayList$Itr.next(ArrayList.java:859)
         //	at practice.test.CollectionTest.main(CollectionTest.java:39)
         //添加的同时，删除
-        Thread thread = new Thread( () -> {
-            for (;;) {
+        Thread thread = new Thread(() -> {
+            for (; ; ) {
                 list.add(5);
                 try {
                     Thread.currentThread().sleep(1000);
@@ -43,12 +47,17 @@ public class CollectionTest {
         });
         thread.start();
         //迭代器删除方法
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             iterator.next();
             iterator.remove();
             Thread.currentThread().sleep(1000);
             System.out.println("删除 ：" + list.size());
         }
 
+    }
+
+    public static void main(String[] args) {
+        BigDecimal bigDecimal = new BigDecimal("0000000000000.000");
+        log.info("result = {}", bigDecimal.compareTo(BigDecimal.valueOf(0)));
     }
 }

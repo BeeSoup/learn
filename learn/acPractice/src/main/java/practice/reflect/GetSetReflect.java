@@ -25,9 +25,13 @@ public class GetSetReflect {
         return age;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+//    public void setAge(String age) {
+//        this.age = age;
+//    }
+    public void setAge(Integer age) {
+
     }
+
 
     public GetSetReflect(String name, String age) {
         this.name = name;
@@ -49,13 +53,14 @@ public class GetSetReflect {
 
         Field[] fields = GetSetReflect.class.getFields(); //父类以及子类的 公有
         fields = GetSetReflect.class.getDeclaredFields(); //declared 子类 私有以及共有
-        for (Field field : fields) {
-            String name = field.getName();
-            String fieldMethod = "get" + name.substring(0, 1).toUpperCase() + name.substring(1);
-
-            Method method = GetSetReflect.class.getMethod(fieldMethod);
-            Object invoke = method.invoke(entity);
-            System.out.println("get" + name + ". value = " + invoke.toString());
-        }
+//        for (Field field : fields) {
+//            String name = field.getName();
+//            String fieldMethod = "get" + name.substring(0, 1).toUpperCase() + name.substring(1);
+//
+//            Method method = GetSetReflect.class.getMethod(fieldMethod);
+//            Object invoke = method.invoke(entity);
+//            System.out.println("get" + name + ". value = " + invoke.toString());
+//        }
+        Method setAge = GetSetReflect.class.getMethod("setAge");
     }
 }
