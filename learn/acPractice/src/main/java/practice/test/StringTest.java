@@ -3,7 +3,6 @@ package practice.test;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -11,6 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 功能说明:
@@ -20,6 +23,11 @@ import java.util.Optional;
  */
 @Slf4j
 public class StringTest {
+
+    private Integer sum = 0;
+    private AtomicInteger integer = new AtomicInteger(5);
+
+
     public static void main1(String[] args) {
         Integer capacity = 11;
         int i = capacity >> 1;
@@ -45,7 +53,7 @@ public class StringTest {
     }
 
     public static void main2(String[] args) {
-        List list = new ArrayList();
+        List<Integer> list = new ArrayList<Integer>();
         list.add(127);// -128~127有存在缓存
         list.add(127);
         list.add(12306);
@@ -73,7 +81,7 @@ public class StringTest {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main4(String[] args) {
 
         User user = null;
         User user1 = new User("ZHANG", 19);
@@ -89,5 +97,25 @@ public class StringTest {
     static class User {
         String name;
         Integer age;
+    }
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+
+        FutureTask<Integer> task = new FutureTask<>(new StringTest().new MyCallable());
+        new Thread(task).start();
+        Integer integer = task.get();
+        log.info(integer.toString());
+    }
+
+    class MyCallable implements Callable<Integer> {
+
+        @Override
+        public Integer call() throws Exception {
+            for (int i = integer.getAndDecrement(); i > 0; i = integer.getAndDecrement()) {
+                Thread.sleep(5 * 1000);
+                sum += i;
+            }
+            return sum;
+        }
     }
 }

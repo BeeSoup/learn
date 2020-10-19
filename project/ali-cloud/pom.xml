@@ -6,6 +6,7 @@
     <modules>
         <module>quick-service-provider</module>
         <module>quick-service-consumer</module>
+        <module>quick-getaway</module>
     </modules>
     <!--    https://spring.io/projects/spring-cloud-alibaba#overview -->
 <!--    <parent>-->
@@ -28,11 +29,7 @@
 
     <dependencies>
 
-        <!--Web-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
 
         <!--actuator-->
         <dependency>
@@ -82,7 +79,19 @@
     <!--spring-cloud-starter-{spring cloud 子项目的名称}-[{模块名词}] -->
 
     <dependencyManagement>
+
+
+
         <dependencies>
+
+            <!--Web-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>2.1.9.RELEASE</version>
+                <optional>true</optional>
+            </dependency>
+
             <!--        先需要整合springCloud 注意版本-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

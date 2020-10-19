@@ -1,0 +1,26 @@
+server:
+  port: 8500
+
+spring:
+  application:
+    name: getaway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        # 让getaway通过组件发现，找其他服务
+        locator:
+          enabled: true
+management:
+  endpoint:
+    health:
+      show-details: always
+  # 激活所有的端点， 默认只有info 和health configprops
+  # /metrics/name（key端点查看对应的信息）
+  # management.endpoints.web.exposure.include=*
+  endpoints:
+    web:
+      exposure:
+        include: '*'
