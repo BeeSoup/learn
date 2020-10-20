@@ -13,6 +13,15 @@ spring:
         # 让getaway通过组件发现，找其他服务
         locator:
           enabled: true
+      routes:
+        - id: some
+          uri: http://www.baidu.com
+          predicates:
+            - Path=/baidu.html
+            - TimeZhang=9:00, 17:00
+          filters:
+            # 前面为key, value
+            - AddRequestHeader=X-Request-Foo, Bar
 management:
   endpoint:
     health:

@@ -17,6 +17,14 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 /**
  * 功能说明:
+ * org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping
+ * org.springframework.cloud.gateway.handler.FilteringWebHandler
+ * <p>
+ * 断点打在 org.springframework.cloud.gateway.filter.NettyRoutingFilter#filter ，就可以调试Gateway转发的具体细节了。
+ * 作者：大目
+ * 链接：https://www.imooc.com/article/290816
+ * 来源：慕课网
+ * 本文原创发布于慕课网 ，转载请注明出处，谢谢合作
  *
  * @author zhang
  * @Date 2020/10/19
