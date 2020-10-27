@@ -10,9 +10,11 @@
 package com.zhangyu.gateway;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 /**
@@ -25,6 +27,8 @@ import org.springframework.core.env.ConfigurableEnvironment;
  * 链接：https://www.imooc.com/article/290816
  * 来源：慕课网
  * 本文原创发布于慕课网 ，转载请注明出处，谢谢合作
+ * <p>
+ * 认证和授权
  *
  * @author zhang
  * @Date 2020/10/19
@@ -32,12 +36,21 @@ import org.springframework.core.env.ConfigurableEnvironment;
 @SpringBootApplication
 @Slf4j
 public class GatewayApplication {
+
+    @Value("${server.port2:2020}")
+    private String obj;
+
+    @Bean
+    public String obj() {
+        return obj;
+    }
+
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(GatewayApplication.class, args);
 
         ConfigurableEnvironment environment = context.getEnvironment();
 
         log.info("网关:\t 地址：http://127.0.0.1:{}", environment.getProperty("server.port"));
-
+        log.info("网关:\t 地址：http://127.0.0.1:{},{}", environment.getProperty("server.port2"),context.getBean("obj"));
     }
 }
