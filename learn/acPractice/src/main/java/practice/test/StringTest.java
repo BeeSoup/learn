@@ -99,7 +99,7 @@ public class StringTest {
         Integer age;
     }
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main5(String[] args) throws ExecutionException, InterruptedException {
 
         FutureTask<Integer> task = new FutureTask<>(new StringTest().new MyCallable());
         new Thread(task).start();
@@ -117,5 +117,10 @@ public class StringTest {
             }
             return sum;
         }
+    }
+
+    public static void main(String[] args) {
+        String[] applyDim = "1,8_00_00_00_00_00_00".split("_");
+        log.info(applyDim.length + "");
     }
 }

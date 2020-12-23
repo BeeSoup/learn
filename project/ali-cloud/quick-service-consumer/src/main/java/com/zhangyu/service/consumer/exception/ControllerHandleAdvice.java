@@ -10,9 +10,12 @@ package com.zhangyu.service.consumer.exception;
 
 import com.zhangyu.service.consumer.entity.ResponseData;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.security.validator.ValidatorException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -52,20 +55,12 @@ public class ControllerHandleAdvice {
         return responseData;
     }
 
-//    @ExceptionHandler(value = {
-//            ValidatorException.class
-//    })
-//    public ResponseData validatorExceptionHandle(HttpServletRequest request, ValidatorException validatorException) {
-//        ResponseData responseData = new ResponseData();
-//        if (validatorException != null) {
-//            // log.error("\r\n【this error Class】：{}\r\n【error message】：{}\r\n", getClass());
-//            log.error("\r\n【{}】--【error message】:{}", Thread.currentThread().getName(), validatorException.getLocalizedMessage(), validatorException);
-//            responseData.setMessage(validatorException.getMessage());
-//            responseData.setCode(500);
-//            return responseData;
-//        }
-//        responseData.setCode(-1);
-//
-//        return responseData;
-//    }
+    @ExceptionHandler(value = {
+            ValidatorException.class
+    })
+    public ResponseEntity<ResponseData> validatorExceptionHandle(HttpServletRequest request, ValidatorException validatorException) {
+        ResponseData responseData = new ResponseData();
+        ResponseEntity<ResponseData> responseEntity = new ResponseEntity<>(responseData, HttpStatus.UNAUTHORIZED);
+        return responseEntity;
+    }
 }

@@ -1,5 +1,6 @@
 package com.zhangyu.service.consumer.controller;
 
+import com.zhangyu.service.consumer.annotation.CheckLogin;
 import com.zhangyu.service.consumer.entity.ResponseData;
 import com.zhangyu.service.consumer.service.ConsumerService;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -72,6 +74,9 @@ public class ConsumerController {
         return responseData;
     }
 
-//    @PostMapping(value = "/users/login")
-
+    @PostMapping(value = "/users/login")
+    @CheckLogin
+    public ResponseData login(@RequestHeader(value = "X-TOKEN" ,required = false) String token) {
+        return ResponseData.ok();
+    }
 }
