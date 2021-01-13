@@ -12,7 +12,7 @@ package com.zhang.learnSource.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
-import io.swagger.annotations.Api;
+// import io.swagger.annotations.Api;
 import lombok.Data;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +27,11 @@ import java.util.Map;
  * 功能说明:
  *
  * @author zhang
- * @Date 2020/08/06
+ * @since  2020/08/06
  */
 @RestController
 @RequestMapping(value = "/myUrl")
-@Api(tags = {"用户controller"})
+// @Api(tags = {"用户controller"})
 public class MyController {
 
     @RequestMapping(value = "/arr")

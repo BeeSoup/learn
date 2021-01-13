@@ -2,3 +2,4 @@
 logging:
   level:
     com.zhang.*: debug
+    org.springframework.web: TRACE
