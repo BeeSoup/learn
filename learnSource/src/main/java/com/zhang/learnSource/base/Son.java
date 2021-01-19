@@ -32,7 +32,7 @@ public class Son extends Parent {
     public void sys() {
         int i;
         System.out.println(k); // 正常0
-        System.out.println(i); // 编译报错
+        // System.out.println(i); // 编译报错
     }
 }
 

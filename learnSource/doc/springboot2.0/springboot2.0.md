@@ -15,6 +15,12 @@
    * 激活： @EnableAutoConfiguration 开启自动化
    * 配置： /META-INF/spring.factories --配置了包括启动className 配置的启动类（相对于ClassPath目录）
    * 实现： XXXAutoConfiguration  规约形式
+   -- 注解说明：
+        @AutoConfigureAfter --在加载之后
+        @Conditional
+        @ConditionalOnClass
+        @EnableConfigurationProperties
+        @Import
 ### 为生产准备的特性：
     指标：/actuator/metrics
     健康检查：/actuator/health
@@ -34,6 +40,18 @@
   -- 资源服务：@RequestMapping @ResponseBody @RequestBody ， 资源跨域：@CrossOrigin/WebMvcConfigurer#addCorsMapping ,  IFrame Jsonp
 > WEB 核心： 核心架构，处理流程，核心组件 
  -- DispatcherServlet HandlerMapping  HandleAdapter ViewResolver ModelAndView
+
+####WebServer
+-- org.springframework.boot.web.server.WebServerFactoryCustomizer 启动Web容器实现接口
+
+###关系型数据
+> JDBC    
+    --数据源/JDBCTemplate（Javax.sql.DataSource）/自动装配（DataSourceAutoConfiguration）   
+> JPA
+    --实体映射关系/实体操作/自动装配
+> 事务
+    -- Spring事务抽象/JDBC的事务处理/自动装配
+ 
 
 ##springboot启动
 ###spring-boot-autoconfigure/spring.factories 
