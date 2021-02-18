@@ -90,3 +90,60 @@ Java 泛型属于编译时处理，运行时擦写。
 ---  
 这是分割线
 ---
+
+#面试题知识点
+##基础知识
+> 面向对象三大特点：封装（数据和操作封装成一个类）、继承（）、多态
+> static,静态关键字，加载类时，会被分配空间加载，在第一次使用的时候，初始化   
+```$xslt
+/*
+ * 软件版权: 恒生电子股份有限公司
+ * 修改记录:
+ * 修改日期     修改人员  修改说明
+ * ========    =======  ============================================
+ * 2021/1/18  zhang  新增
+ * ========    =======  ============================================
+ */
+
+package com.zhang.learnSource.base;
+
+import lombok.Data;
+
+/**
+ * 功能说明:
+ *
+ * @author zhang
+ * @Date 2021/01/18
+ */
+@Data
+public class Son extends Parent {
+    private String sonData;
+
+    private int k;
+
+    public static void main(String[] args) {
+        Son son = new Son();
+        String data = son.getData();
+        son.sys();
+    }
+
+    public void sys() {
+        int i;
+        System.out.println(k); // 正常0
+        System.out.println(i); // 编译报错
+    }
+}
+初始值
+
+成员变量：有默认初始值。
+
+局部变量：没有默认初始值，使用前必须赋值。
+
+使用原则
+
+在使用变量时需要遵循的原则为：就近原则
+首先在局部范围找，有就使用；接着在成员位置找。
+
+
+
+```
