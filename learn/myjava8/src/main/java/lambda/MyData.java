@@ -22,6 +22,8 @@ public class MyData {
 
   private String name = "default";
 
-
+  public static void main(String[] args) {
+    log.info("1");
+  }
 
 }

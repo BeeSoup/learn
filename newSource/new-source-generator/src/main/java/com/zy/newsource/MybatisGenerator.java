@@ -46,7 +46,7 @@ public class MybatisGenerator {
     static String driverName = "com.mysql.cj.jdbc.Driver";
     static DbType dbType = DbType.MYSQL;
     // 所需的表
-    static String tables = "users:Users";
+    static String tables = "order_items:OrderItems,order_status:OrderStatus,orders:Orders";
 
     static String moduleName = "";
 
@@ -155,10 +155,12 @@ public class MybatisGenerator {
         strategy.setEntityLombokModel(true);
         strategy.setTableFillList(Arrays.asList(
                 new TableFill("created_time", FieldFill.INSERT),
+                new TableFill("create_time", FieldFill.INSERT),
 //                new TableFill("create_date", FieldFill.INSERT),
 //                new TableFill("create_time", FieldFill.INSERT),
 //                new TableFill("last_user_id", FieldFill.INSERT_UPDATE),
 //                new TableFill("last_date", FieldFill.INSERT_UPDATE),
+                new TableFill("update_time", FieldFill.INSERT_UPDATE),
                 new TableFill("updated_time", FieldFill.INSERT_UPDATE)
         ));
 

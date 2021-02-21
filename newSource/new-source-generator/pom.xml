@@ -41,7 +41,6 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis.plus.version}</version>
-            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -53,7 +52,6 @@
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
-            <optional>true</optional>
             <version>${org.apache.velocity.version}</version>
         </dependency>
 
@@ -71,7 +69,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
-            <optional>true</optional>
         </dependency>
 
 

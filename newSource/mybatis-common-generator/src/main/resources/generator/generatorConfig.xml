@@ -10,7 +10,7 @@
 
         <!-- 通用mapper所在目录 -->
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.zy.template.mapper.BaseMapper"/>
+            <property name="mappers" value="com.zy.newsource.pojo.datasource.BaseMapper"/>
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
@@ -20,10 +20,10 @@
         </jdbcConnection>
 
         <!-- 对应生成的pojo所在包 -->
-        <javaModelGenerator targetPackage="com.zy.newsourcce.pojo" targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="com.zy.newsourcce.pojo.datasource.entity" targetProject="src/main/java"/>
 
 		<!-- 对应生成的mapper所在目录 -->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources/mapper/common"/>
+        <sqlMapGenerator targetPackage="mapper.common" targetProject="src/main/resources"/>
 
 		<!-- 配置mapper对应的java映射 -->
         <javaClientGenerator targetPackage="com.zy.newsourcce.dao" targetProject="src/main/java" type="XMLMAPPER"/>

@@ -1,0 +1,107 @@
+package com.zy.newsourcce.pojo.datasource.entity;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * <p>
+ * 订单表 
+ * </p>
+ *
+ * @author zy
+ * @since 2021-02-21
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@TableName("orders")
+public class Orders implements Serializable {
+
+    private static final long serialVersionUID=1L;
+
+    /**
+     * 订单主键 同时也是订单编号
+     */
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
+    private String id;
+
+    /**
+     * 用户id
+     */
+    private String userId;
+
+    /**
+     * 收货人快照
+     */
+    private String receiverName;
+
+    /**
+     * 收货人手机号快照
+     */
+    private String receiverMobile;
+
+    /**
+     * 收货地址快照
+     */
+    private String receiverAddress;
+
+    /**
+     * 订单总价格
+     */
+    private Integer totalAmount;
+
+    /**
+     * 实际支付总价格
+     */
+    private Integer realPayAmount;
+
+    /**
+     * 邮费 默认可以为零，代表包邮
+     */
+    private Integer postAmount;
+
+    /**
+     * 支付方式 1:微信 2:支付宝
+     */
+    private Integer payMethod;
+
+    /**
+     * 买家留言
+     */
+    private String leftMsg;
+
+    /**
+     * 扩展字段
+     */
+    private String extand;
+
+    /**
+     * 买家是否评价 1：已评价，0：未评价
+     */
+    private Integer isComment;
+
+    /**
+     * 逻辑删除状态 1: 删除 0:未删除
+     */
+    private Integer isDelete;
+
+    /**
+     * 创建时间（成交时间）
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createdTime;
+
+    /**
+     * 更新时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updatedTime;
+
+
+}
