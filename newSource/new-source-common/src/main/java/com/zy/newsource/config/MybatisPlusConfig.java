@@ -29,7 +29,7 @@ import java.util.Date;
 public class MybatisPlusConfig {
     @Bean
     public String test() {
-        System.out.println("扫描到，并且启动不了");
+        System.out.println("扫描到，并且启动了");
         return "success;";
     }
 
@@ -41,7 +41,7 @@ public class MybatisPlusConfig {
 
 //    @Bean
 //    public MybatisPlusPropertiesCustomizer plusPropertiesCustomizer() {
-//        return plusProperties -> plusProperties.getGlobalConfig().setIdentifierGenerator(new IdentifierGenerator() {
+//        return p3lusProperties -> plusProperties.getGlobalConfig().setIdentifierGenerator(new IdentifierGenerator() {
 //            @Override
 //            public Long nextId(Object entity) {
 //                Date date = new Date();

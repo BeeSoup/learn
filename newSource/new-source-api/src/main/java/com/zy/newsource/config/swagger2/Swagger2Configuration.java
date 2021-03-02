@@ -40,7 +40,7 @@ public class Swagger2Configuration {
                 .title("测试Swagger接口api")
                 // 联系人信息
                 .contact(new Contact("newsource",
-                        "https://www.baidu.com",
+                        "https://www.hundsun.com",
                         "beefsoup6863@163.com"))
                 // 详细信息
                 .description("测试Swagger接口api文档")

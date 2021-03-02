@@ -36,17 +36,25 @@ import java.util.Scanner;
 public class MybatisGenerator {
 
     // 包路徑
-    static String parentPackage = "com.zy.newsourcce.pojo.datasource";
+    static String parentPackage = "com.hundsun.idr.infodcs.datasource";
     // 数据库相关配置
     static String dbUrl = "jdbc:mysql://101.37.81.92:3306/new?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true";
     static String dbUserName = "root";
     static String dbPassWord = "zhangyu110";
 
+//    static String dbUrl = "jdbc:mysql://10.20.44.213:33061/bfam69?useUnicode=true&characterEncoding=utf-8";
+//    static String dbUserName = "root";
+//    static String dbPassWord = "root";
+
+
     // static String driverName = "oracle.jdbc.driver.OracleDriver";
     static String driverName = "com.mysql.cj.jdbc.Driver";
     static DbType dbType = DbType.MYSQL;
     // 所需的表
-    static String tables = "order_items:OrderItems,order_status:OrderStatus,orders:Orders";
+//  static String tables = "order_items:OrderItems,order_status:OrderStatus,orders:Orders";
+    static String tables = "idr_id_base_plan_dtl:IdrIdBasePlanDtl,idr_id_base_plan_dtl_his:IdrIdBasePlanDtlHis," +
+            "idr_id_base_plan_info:IdrIdBasePlanInfo,idr_id_base_plan_info_his:IdrIdBasePlanInfoHis," +
+            "idr_id_disclosure_obj_cfg:IdrIdDisclosureObjCfg,idr_id_disclosure_obj_cfg_his:IdrIdDisclosureObjCfgHis";
 
     static String moduleName = "";
 
@@ -154,14 +162,16 @@ public class MybatisGenerator {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setTableFillList(Arrays.asList(
-                new TableFill("created_time", FieldFill.INSERT),
-                new TableFill("create_time", FieldFill.INSERT),
-//                new TableFill("create_date", FieldFill.INSERT),
+//                new TableFill("created_time", FieldFill.INSERT),
 //                new TableFill("create_time", FieldFill.INSERT),
-//                new TableFill("last_user_id", FieldFill.INSERT_UPDATE),
-//                new TableFill("last_date", FieldFill.INSERT_UPDATE),
-                new TableFill("update_time", FieldFill.INSERT_UPDATE),
-                new TableFill("updated_time", FieldFill.INSERT_UPDATE)
+                new TableFill("create_user_id", FieldFill.INSERT),
+                new TableFill("create_date", FieldFill.INSERT),
+                new TableFill("create_time", FieldFill.INSERT),
+                new TableFill("last_user_id", FieldFill.INSERT_UPDATE),
+                new TableFill("last_date", FieldFill.INSERT_UPDATE),
+                new TableFill("last_time", FieldFill.INSERT_UPDATE)
+//                new TableFill("update_time", FieldFill.INSERT_UPDATE),
+//                new TableFill("updated_time", FieldFill.INSERT_UPDATE)
         ));
 
         if (cfg.getTableNames() != null) {

@@ -95,6 +95,61 @@ Java 泛型属于编译时处理，运行时擦写。
 ##基础知识
 > 面向对象三大特点：封装（数据和操作封装成一个类）、继承（）、多态
 > static,静态关键字，加载类时，会被分配空间加载，在第一次使用的时候，初始化   
+>
+
+##异常处理
+> 并非所有的类都能用try-with-resources处理。实现AutoCloseable接口是使用try-with-resources语句的前提。
+> 在try-with-resources语句中，只有实现了AutoCloseable接口的类才会被视为资源进行相关处理，否则会出现编译错误。
+> try-with-resources语句和AutoCloseable接口
+>  Java7为我们提供了一个非常强悍的功能来自动关闭这些资源。“管理”一词在这里燃值颇高，其实它的工作就是关闭资源。资源自动化管理帮助我们自动关闭这些资源。
+> Resource instantiation should be done within try(). A parenthesis () is introduced after 
+   try statement and the resource instantiation should happen within that paranthesis as below,
+   　　资源的初始化工作是在try()中完成的。try后面引入了一对小括号()，用于在其中完成资源的初始化，示例如下：
+```$xslt
+try (InputStream is = new FileInputStream("test")) {
+	is.read();
+	...
+} catch(Exception e) {
+	...
+} finally {
+	//no need to add code to close InputStream, its close method will be internally called
+	//（无需添加关闭InputStream输入流的代码，其close()方法会自行调用）
+}
+```
+
+> 异常处理的性能成本非常高，每个 Java 程序员在开发时都应牢记这句话。创建一个异常非常慢，抛出一个异常又会消耗1~5ms，当一个异常在应用的多个层级之间传递时，会拖累整个应用的性能。
+> 仅在异常情况下使用异常；
+  在可恢复的异常情况下使用异常；
+  尽管使用异常有利于 Java 开发，但是在应用中最好不要捕获太多的调用栈，因为在很多情况下都不需要打印调用栈就知道哪里出错了。因此，异常消息应该提供恰到好处的信息。
+```$xslt
+ /**
+     * 2021-01-25 10:36:17.156 INFO  MyTest                                            :34   start
+     * 2021-01-25 10:36:17.158 INFO  MyTest                                            :41   invoke
+     * 2021-01-25 10:36:17.158 INFO  MyTest                                            :42   return
+     * 2021-01-25 10:36:17.158 INFO  MyTest                                            :47   finally
+     * 2021-01-25 10:36:17.158 INFO  MyTest                                            :36   end
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        log.info("start");
+        testTry();
+        log.info("end");
+    }
+
+    public static void testTry() {
+        try {
+            log.info("invoke");
+            log.info("return");
+            return;
+        } catch (Exception e) {
+            log.info("catch");
+        } finally {
+            log.info("finally");
+        }
+    }
+```
+
 ```$xslt
 /*
  * 软件版权: 恒生电子股份有限公司
@@ -147,3 +202,5 @@ public class Son extends Parent {
 
 
 ```
+
+##并发知识点
