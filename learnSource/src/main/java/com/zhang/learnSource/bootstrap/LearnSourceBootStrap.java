@@ -1,10 +1,10 @@
 package com.zhang.learnSource.bootstrap;
 
-import com.zhang.learnSource.bootstrap.annotation.HelloWorldImportSelector;
-import com.zhang.learnSource.bootstrap.conditional.ConditionalOnSystemProperty;
-import com.zhang.learnSource.bootstrap.profile.ProfileTest;
-import com.zhang.learnSource.bootstrap.test.TestBean;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+//import com.zhang.learnSource.bootstrap.annotation.HelloWorldImportSelector;
+//import com.zhang.learnSource.bootstrap.conditional.ConditionalOnSystemProperty;
+//import com.zhang.learnSource.bootstrap.profile.ProfileTest;
+//import com.zhang.learnSource.bootstrap.test.TestBean;
+//import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;

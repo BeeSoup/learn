@@ -1,5 +1,7 @@
 package lambda;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -10,28 +12,45 @@ import java.util.stream.Collectors;
  * @Description: TODO
  * @date 2019/11/12 15:20
  */
+@Slf4j
 public class SSS {
+//
+//    public static void main(String[] args) {
+//
+//        String msg = "";
+//        Integer.valueOf(msg);
+//        log.info("yes");
+//
+//    }
 
     public static void main(String[] args) {
-        int length = 10000;
-        List<String> list = new ArrayList<>();
-        List<String> list1 = new ArrayList<>();
-        for (int i = 0; i < length; i++) {
-            list.add("test" + i);
-            list1.add("test" + (length + i));
+        int i = 0;
+        synchronized (i) {
+
         }
-        long st = System.nanoTime();
-        System.out.println(checkDiffrent4(list, list1));
-        System.out.println("消耗时间为4： " + (System.nanoTime() - st));
 
-        st = System.nanoTime();
-        System.out.println(checkDiffrent5(list, list1));
-        System.out.println("消耗时间为5： " + (System.nanoTime() - st));
-
-        st = System.nanoTime();
-        System.out.println(checkDiffrent(list, list1));
-        System.out.println("消耗时间为1： " + (System.nanoTime() - st));
     }
+
+//    public static void main(String[] args) {
+//        int length = 10000;
+//        List<String> list = new ArrayList<>();
+//        List<String> list1 = new ArrayList<>();
+//        for (int i = 0; i < length; i++) {
+//            list.add("test" + i);
+//            list1.add("test" + (length + i));
+//        }
+//        long st = System.nanoTime();
+//        System.out.println(checkDiffrent4(list, list1));
+//        System.out.println("消耗时间为4： " + (System.nanoTime() - st));
+//
+//        st = System.nanoTime();
+//        System.out.println(checkDiffrent5(list, list1));
+//        System.out.println("消耗时间为5： " + (System.nanoTime() - st));
+//
+//        st = System.nanoTime();
+//        System.out.println(checkDiffrent(list, list1));
+//        System.out.println("消耗时间为1： " + (System.nanoTime() - st));
+//    }
 
     /**
      * 方法一：使用循环遍历

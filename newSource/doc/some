@@ -1,0 +1,41 @@
+JSR303 BindingResult bind -> 接收校验结果
+
+headers{
+    ‘Context-Type’:'multipart/form-data',
+
+}   ---> 接收文件
+
+
+文件名：
+"test.txt" -> ["test", "txt"]
+String[]  name =   file.split("\\.")
+// 创建文件夹
+File.getParentFile().mkdir();
+
+
+FileOutputStream output = new FileOutputStream("目标路径");
+InputStream input = file.getInputStream();
+IOUtils.copy(input, output);
+
+
+output.flush();
+output.close();
+
+
+@Component
+@ConfigurationProperties(prefix = "file") // 前置
+@PropertySource("classpath:file.properties ")
+
+
+
+文件后缀校验， 拒绝 .sh .php 防黑客攻击
+
+
+"文件后缀".equalsIgnoreCase("png")
+jpg, jpeg,gif
+
+
+
+// 文件最大上传大小
+spring.servlet.multipart.max-file-size: 1M
+// 还有最大的请求大小

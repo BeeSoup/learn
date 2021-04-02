@@ -23,6 +23,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/META-INF/resources/")  // 映射swagger2
+                // 映射到具体问题 通过ip访问，比如http://127.0.0.1:8088/映射目录下的地址 从映射目录下开始
                 .addResourceLocations("file:/workspaces/images/");  // 映射本地静态资源
     }
 
