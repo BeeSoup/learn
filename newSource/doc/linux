@@ -1,1 +1,10 @@
 linux基础命令：
+
+
+
+JDK 安装
+    java -version
+    rpm -qa|grep openjdk -i                  ----检查系统安装的OpenJDK
+
+    rpm -e --nodeps 需要删除的软件             ----删除以上四项openjdk 的安装包并且检查后显示删除完毕
+     mkdir /usr/local/java
