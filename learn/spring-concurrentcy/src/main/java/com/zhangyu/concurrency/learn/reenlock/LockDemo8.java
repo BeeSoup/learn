@@ -43,6 +43,13 @@ public class LockDemo8 {
 //        lock.unlock(); 解锁 获取下一个执行，状态降为1
 
 //        唤醒 再lock.unlock
+
+        // 前提条件，对于condition 而言需要Lock
+        // 前提条件，对于 Object wait notify notifyAll 而言， 是synchronized(object) 需要获取到，Thread owner of the object's monitor. 需要拥有自己的监控对象
+
+
+        // 生产者和消费者，小于阈值等待，大于阈值也等待，最终是消费者和生成者达到一个平衡，同时保证内存不溢出。也不会有错误的消费
+
         new Thread(() -> {
             try {
                 lock.lock();

@@ -4,6 +4,7 @@ import com.zhangyu.concurrency.learn.annotation.SafeThread;
 import com.zhangyu.concurrency.learn.annotation.UnsafeThread;
 
 /**
+ * ti_indicators_tmp
  * 枚举单例模式
  * 饿汉模式
  */
