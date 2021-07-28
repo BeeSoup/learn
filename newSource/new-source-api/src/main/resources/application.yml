@@ -4,7 +4,7 @@
 #
 ############################################################
 server:
-  port: 8088
+#  port: 8088
   tomcat:
     uri-encoding: UTF-8
   max-http-header-size: 80KB
@@ -12,6 +12,7 @@ server:
 ############################################################
 #
 # 配置数据源信息
+#  激活application-{name}.yml 也是就是 application-dev.yml
 #
 ############################################################
 spring:
@@ -20,9 +21,9 @@ spring:
   datasource:                                           # 数据源的相关配置
     type: com.zaxxer.hikari.HikariDataSource          # 数据源类型：HikariCP
     driver-class-name: com.mysql.cj.jdbc.Driver         # mysql驱动
-    url: jdbc:mysql://101.37.81.92:3306/new?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
+    url: jdbc:mysql://10.20.44.213:33061/new?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true
     username: root
-    password: zhangyu110
+    password: root
     hikari:
       connection-timeout: 30000       # 等待连接池分配连接的最大时长（毫秒），超过这个时长还没可用的连接则发生SQLException， 默认:30秒
       minimum-idle: 5                 # 最小连接数 5~10 上线10
@@ -54,6 +55,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true # 驼峰自动和_ 映射
     call-setters-on-nulls: true # 保证结果集返回全部字段，如果为false，则会过滤掉null值的字段
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 ############################################################
 #
 # mybatis mapper 配置
