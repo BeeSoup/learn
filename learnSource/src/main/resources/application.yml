@@ -1,5 +1,12 @@
+
+
 #日志管理非
 logging:
   level:
     com.zhang.*: debug
     org.springframework.web: TRACE
+server:
+  port: 8191
+
+local:
+  filePath: F:local\jc\

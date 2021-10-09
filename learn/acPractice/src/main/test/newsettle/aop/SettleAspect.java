@@ -186,7 +186,7 @@ public class SettleAspect {
     @Around(value = "execution (* com.xQuant.platform.app.newsettle.service.task.AbstractTaskFlowAdapterService+.aopExecute(..))")
     public Object doAroundAdviceTask(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         System.out.println("环绕开始");
-//        StringBuffer insertLog = new StringBuffer();
+        // StringBuffer insertLog = new StringBuffer();
         Object obj = null;
         TaskOperEntity param = null;
         TaskFlowService target = (TaskFlowService) proceedingJoinPoint.getTarget();
@@ -203,7 +203,7 @@ public class SettleAspect {
             }
             obj = proceedingJoinPoint.proceed(); //可以加参数
         } catch (Throwable throwable) {
-//            System.out.println("@Around  " + throwable.getMessage() + "异常了异常了 夭寿了   ");
+            // System.out.println("@Around  " + throwable.getMessage() + "异常了异常了 夭寿了   ");
             param.setMsg(throwable.getMessage());
             taskName = target.getTaskName(param.getDirection());
             printLog(param, taskName);
@@ -217,15 +217,15 @@ public class SettleAspect {
         System.out.println("环绕结束");
         return obj;
     }
-//    @AfterThrowing(value = "execution (* com.xQuant.platform.app.newsettle.service.task.AbstractTaskFlowAdapterService+.execute(..))", throwing = "exception")
-//    public void doAfterThrowingAdviceTask(JoinPoint joinPoint, Throwable exception) {
-//        System.out.println("我报错了！真的。 " + exception.getMessage());
-//    }
+// @AfterThrowing(value = "execution (* com.xQuant.platform.app.newsettle.service.task.AbstractTaskFlowAdapterService+.execute(..))", throwing = "exception")
+// public void doAfterThrowingAdviceTask(JoinPoint joinPoint, Throwable exception) {
+//   System.out.println("我报错了！真的。 " + exception.getMessage());
+// }
 
-//    @Before(value = "execution (* com.xQuant.platform.app.newsettle.service.task.AbstractTaskFlowAdapterService+.aopExecute(..))")
-//    public void doPersonMethodTask(JoinPoint joinPoint) {
-//        System.out.println("doPersonMethodTask前置通知");
-//    }
+// @Before(value = "execution (* com.xQuant.platform.app.newsettle.service.task.AbstractTaskFlowAdapterService+.aopExecute(..))")
+// public void doPersonMethodTask(JoinPoint joinPoint) {
+//   System.out.println("doPersonMethodTask前置通知");
+// }
 
 //    @After(value = "execution (* com.xQuant.platform.app.newsettle.service.task.AbstractTaskFlowAdapterService+.aopExecute(..))")
 //    public void doAccessAfterTask() {

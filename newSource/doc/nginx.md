@@ -75,5 +75,25 @@ Nginx 负载均衡
 Haproxy 负载均衡
 apache 
     
+    
+nginx 如何支持集群部署 Web 操作流程
+
+# 配置上游服务器
+upstream test {
+# server
+    server ip:port;
+    server ip:port;
+}
+server {
+    listen 80;
+    server_name www.test.com;
+    location / {
+    # 放到代理块
+        proxy_pass http://test;
+    }
+}    
+    
+JMeter   
+    
 nginx：一千零一问：
  1、为什么使用nginx？
