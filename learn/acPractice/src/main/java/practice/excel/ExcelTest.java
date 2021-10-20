@@ -117,10 +117,12 @@ public class ExcelTest {
 
         List<ExcelEntity> list = Arrays.asList(
                 ExcelEntity.builder()
-                        .name("张三1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111").age("15")
+                        .name("张三1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
+                        .age("15")
                         .build(),
                 ExcelEntity.builder()
-                        .name("李四").age("20")
+                        .name("李四")
+                        .age("20")
                         .build());
         EasyExcel.write(fileName).registerWriteHandler(horizontalCellStyleStrategy)
                 .registerWriteHandler(new AbstractColumnWidthStyleStrategy() {
