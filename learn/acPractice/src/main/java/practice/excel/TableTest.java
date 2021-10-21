@@ -12,6 +12,7 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.metadata.CellData;
 import com.alibaba.excel.metadata.Head;
+import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.metadata.fill.FillConfig;
 import com.alibaba.excel.write.metadata.holder.WriteSheetHolder;
@@ -19,6 +20,7 @@ import com.alibaba.excel.write.metadata.style.WriteCellStyle;
 import com.alibaba.excel.write.metadata.style.WriteFont;
 import com.alibaba.excel.write.style.HorizontalCellStyleStrategy;
 import com.alibaba.excel.write.style.column.AbstractColumnWidthStyleStrategy;
+import com.alibaba.excel.write.style.column.LongestMatchColumnWidthStyleStrategy;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -26,10 +28,12 @@ import com.alibaba.fastjson.TypeReference;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Sheet;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,32 +54,37 @@ public class TableTest {
         Map<String, ExcelDTO> deal = getExcelMap();
         excel(deal);
 //        log.info(deal.toString());
-        fill();
+        String tempName = "测试多sheet页001";
+//        String tempName1 = "测试多sheet页002.xls";
+//        fill(tempName1);
+        fill(tempName);
 
     }
 
-    public static void fill() {
+    public static void fill(String tempName) {
         String filePath = "F:\\excel\\";
-        String tempName = "测试多sheet页001.xlsx";
-        String templateFileName = filePath + tempName;
 
-        String fillName = "fill_" + "测试多sheet页001.xlsx";
+        String templateFileName = filePath + tempName + ".xls";
 
-        String fillFileName = filePath + fillName;
+        String fillName = "fill_" + tempName;
+
+        String fillFileName = filePath + fillName + ".xls";
 
         ExcelWriter excelWriter = null;
         try {
             excelWriter = EasyExcel.write(fillFileName)
-
+//                    .excelType(ExcelTypeEnum.XLSX)
+//                    .registerWriteHandler(strategy())
                     .withTemplate(templateFileName).build();
 
             WriteSheet sheet1 = EasyExcel.writerSheet("测试多sheet页0012").build();
             WriteSheet sheet2 = EasyExcel.writerSheet("测试多sheet页0011").build();
 
             FillConfig fillConfig = FillConfig.builder().forceNewRow(Boolean.TRUE).build();
+//            FillWrapper fillData1 = new FillWrapper("test", fillData());
             excelWriter.fill(fillData(), sheet1);
 //            excelWriter.fill(fillData(), fillConfig, sheet1);
-            excelWriter.fill(fillData(), sheet2);
+//            excelWriter.write(dataList(), sheet2);
 //            excelWriter.fill(fillData(), fillConfig, sheet2);
         } finally {
             // 千万别忘记finish 会帮忙关闭流
@@ -85,11 +94,14 @@ public class TableTest {
         }
     }
 
+
     private static HorizontalCellStyleStrategy strategy() {
         // 头的策略
         WriteCellStyle headWriteCellStyle = new WriteCellStyle();
 
-
+        // 设置 自动换行
+//        headWriteCellStyle.setWrapped(true);
+        headWriteCellStyle.setHorizontalAlignment(HorizontalAlignment.CENTER);
         // 背景设置为红色
 //        headWriteCellStyle.setFillForegroundColor(IndexedColors.RED.getIndex());
         WriteFont headWriteFont = new WriteFont();
@@ -104,14 +116,15 @@ public class TableTest {
         WriteFont contentWriteFont = new WriteFont();
 
         // 设置 自动换行
-        contentWriteCellStyle.setWrapped(true);
+//        contentWriteCellStyle.setWrapped(true);
         // 设置 垂直居中
 //        contentWriteCellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
 //        // 设置 水平居中
-//        contentWriteCellStyle.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        contentWriteCellStyle.setHorizontalAlignment(HorizontalAlignment.CENTER);
 
         // 字体大小
         contentWriteFont.setFontHeightInPoints((short) 10);
+//        contentWriteFont.setCharset(FontCharset.GB2312.getNativeId());
         contentWriteCellStyle.setWriteFont(contentWriteFont);
         // 这个策略是 头是头的样式 内容是内容的样式 其他的策略可以自己实现
         HorizontalCellStyleStrategy horizontalCellStyleStrategy =
@@ -119,22 +132,34 @@ public class TableTest {
         return horizontalCellStyleStrategy;
     }
 
+    private static List<List<Object>> dataList() {
+        List<List<Object>> list = new ArrayList<List<Object>>();
+        for (int i = 0; i < 10; i++) {
+            List<Object> data = new ArrayList<Object>();
+            data.add("字符串" + i);
+            data.add(new Date());
+            data.add(0.56);
+            list.add(data);
+        }
+        return list;
+    }
+
     public static List<Map<String, Object>> fillData() {
         List<Map<String, Object>> list = new ArrayList<>();
 
         Map<String, Object> map = new HashMap<>();
-        map.put("field12", "字符串s1");
-        map.put("field11", "字符串1");
+//        map.put("field12", "字符串s1");
+//        map.put("field11", "字符串1");
 
-        map.put("field22", "字符串2");
-        map.put("field21", "字符串kkkk2");
+        map.put("field22", "字符串row1_22");
+        map.put("field21", "字符串row1_21");
         list.add(map);
         Map<String, Object> map2 = new HashMap<>();
-        map2.put("field11", "字符串11");
-        map2.put("field12", "字符串xxxx11");
+//        map2.put("field11", "字符串11");
+//        map2.put("field12", "字符串xxxx11");
 
-        map2.put("field21", "字符串aaaaa22");
-        map2.put("field22", "字符串22");
+        map2.put("field21", "字符串row2_21");
+        map2.put("field22", "字符串row2_22");
         list.add(map2);
         return list;
     }
@@ -147,9 +172,11 @@ public class TableTest {
             // 这里 指定文件
             for (Map.Entry<String, ExcelDTO> entry : deal.entrySet()) {
                 ExcelDTO value = entry.getValue();
-                fileName = fileName + value.getTableNameCn() + ".xlsx";
+                fileName = fileName + value.getTableNameCn() + ".xls";
                 excelWriter = EasyExcel.write(fileName)
+//                        .excelType(ExcelTypeEnum.XLSX)
                         .registerWriteHandler(strategy())
+
                         .registerWriteHandler(new AbstractColumnWidthStyleStrategy() {
                             @Override
                             protected void setColumnWidth(WriteSheetHolder writeSheetHolder, List<CellData> cellDataList,
@@ -157,8 +184,14 @@ public class TableTest {
                                 // 简单设置
                                 Sheet sheet = writeSheetHolder.getSheet();
                                 sheet.setColumnWidth(cell.getColumnIndex(), 5000);
+                                if (!isHead) {
+                                    log.info("cell");
+                                    String stringCellValue = cell.getStringCellValue();
+                                    cell.setCellValue(stringCellValue);
+                                }
                             }
                         })
+//                        .registerWriteHandler(new LongestMatchColumnWidthStyleStrategy())
                         .build();
                 // 去调用写入,这里我调用了五次，实际使用时根据数据库分页的总的页数来。这里最终会写到5个sheet里面
                 List<SheetDTO> sheetList = value.getSheetList();
@@ -193,11 +226,12 @@ public class TableTest {
 
     }
 
-    private static List<List<Object>> dataList(List<PcParamInterTableFieldVO> fieldList) {
-        List<List<Object>> list = new ArrayList<List<Object>>();
-        List<Object> row = new ArrayList<Object>();
+    private static List<List<String>> dataList(List<PcParamInterTableFieldVO> fieldList) {
+        List<List<String>> list = new ArrayList<>();
+        List<String> row = new ArrayList<>();
         for (PcParamInterTableFieldVO field : fieldList) {
-            row.add("{." + field.getFieldName() + "}");
+            String fieldFill = " {." + field.getFieldName() + "} ";
+            row.add(fieldFill);
         }
         list.add(row);
 
@@ -215,7 +249,7 @@ public class TableTest {
     private static List<List<String>> head(List<PcParamInterTableFieldVO> fieldList) {
         List<List<String>> headList = fieldList.stream().map(
                 (f) -> {
-                    List<String> head = new ArrayList<String>();
+                    List<String> head = new ArrayList<>();
                     head.add(f.getFieldNameCn());
                     return head;
                 }
