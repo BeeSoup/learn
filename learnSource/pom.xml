@@ -71,7 +71,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.44</version>
+            <version>1.2.83</version>
         </dependency>
 
 <!--        mvn install:install-file -Dfile=E:/maven/jar-cj-0.0.1-SNAPSHOT.jar -DgroupId=com.zhangyu -DartifactId=jar-cj -Dversion=0.1 -Dpackaging=jar-->
